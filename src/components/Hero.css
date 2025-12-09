@@ -33,18 +33,30 @@ body {
 .hero-content {
     z-index: 2;
     padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
 }
 
 .hero-sm-title {
+    font-family: Bebas Neue, sans-serif;
     font-size: 4rem;
-    margin: 0;;
+    margin: 0;
+    color: white;
+    line-height: 1;
+    letter-spacing: 2px;
 }
 
 .hero-title {
-    font-size: 15rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    line-height: 1;
+    font-family: Bebas Neue, sans-serif;
+    margin: 0;
+    line-height: 0.9;
+    font-size: 20rem;
+    color: transparent;
+    -webkit-text-stroke: 3px white;
+    text-stroke: 3px white;        /* Standard version */
 }
 
 .buttons {
