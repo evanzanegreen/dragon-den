@@ -1,11 +1,30 @@
 import "./Hero.css";
 
-function Hero() {
+function Hero({
+  mediaType = "video",
+  mediaSrc,
+  overlayOpacity = 0.5,
+  altText = "Hero Image",
+  smTitle = "WELCOME TO THE",
+  title = "DEN.",
+}) {
   return (
     <section className="hero">
-      {/*Background Video*/}
+      {/*Background Media*/}
+      {mediaType === "video" ? (
+        <video
+          className="hero-bg"
+          src={mediaSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      ) : (
+        <img className="hero-bg" src={mediaSrc} alt={altText} />
+      )}
       <video
-        className="hero-video"
+        className="hero-bg"
         src="/video/home-hero-2.mp4"
         autoPlay
         loop
@@ -14,12 +33,15 @@ function Hero() {
       />
 
       {/*Hero Overlay*/}
-      <div className="hero-overlay" />
+      <div
+        className="hero-overlay"
+        style={{ backgroundColor: `rgba(0,0,0,${overlayOpacity})` }}
+      />
 
       {/*Content*/}
       <div className="hero-content">
-        <h2 className="hero-sm-title">WELCOME TO THE</h2>
-        <h1 className="hero-title">DEN.</h1>
+        <h2 className="hero-sm-title">{smTitle}</h2>
+        <h1 className="hero-title">{title}</h1>
         {/*<h3 className="subtitle">
           Authentic Caribbean Flavors. Bold Spices & an Unforgettable
           Atmosphere.
