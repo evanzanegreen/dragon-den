@@ -4,21 +4,36 @@
     align-items: center;
     width: 100%;
     height: auto;
-    padding: 5rem, 2rem, 5rem, 2rem;
+    padding: 1rem 5rem;
     background-color: black;
+    z-index: 3;
 }
 
 .logo-box {
-    width: 10rem;
-    height: auto;
+    width: 6rem;
 }
 
 .dd-logo {
     width: 100%;
+    height: auto;
+    display: block;
 }
 
 .nav-item {
     display: flex;
-    justify-content: space-between;
+    gap: 2rem;
     width: 15%;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-item a:hover {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    border-bottom: 3px;
+    border-color: white;
 }

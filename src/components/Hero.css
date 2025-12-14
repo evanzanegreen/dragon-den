@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   width: 100vw;   /* full viewport width */
-  height: 90vh;   /* or 100vh if you want */
+  height: 75vh;   /* or 100vh if you want */
   overflow: hidden;
 }
 
