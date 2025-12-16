@@ -1,0 +1,21 @@
+.top-section {
+    background-color: #CCCCCC;
+}
+
+.header {
+    font-family: Bebas Neue, sans-serif;
+    text-transform: uppercase;
+}
+
+.line1 {
+    color: black;
+}
+
+.line2 {
+    color: #4D4D4D;
+}
+
+p {
+    font-family: Inter, san-serif;
+    color: black;
+}

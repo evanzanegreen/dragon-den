@@ -1,5 +1,5 @@
 import Hero from "../components/Hero.jsx";
-import NavBar from "../components/NavBar.jsx";
+import TitleSection from "../components/TitleSection.jsx";
 
 function Home() {
   return (
@@ -14,6 +14,8 @@ function Home() {
           alt="Home Hero"
         />
       </div>
+
+      <TitleSection />
     </>
   );
 }
