@@ -1,10 +1,19 @@
-.top-section {
+.section {
     background-color: #CCCCCC;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 5rem;
 }
 
 .header {
     font-family: Bebas Neue, sans-serif;
     text-transform: uppercase;
+    margin: 0px;
 }
 
 .line1 {
@@ -13,6 +22,7 @@
 
 .line2 {
     color: #4D4D4D;
+    margin-top: -0.5rem;
 }
 
 p {

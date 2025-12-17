@@ -1,0 +1,33 @@
+.section-chef {
+    background-color: #395622;
+    width: 100%;
+}
+
+.container-chef {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 5rem;
+}
+
+.header-chef {
+    font-family: Bebas Neue, sans-serif;
+    text-transform: uppercase;
+    margin: 0px;
+    color: white;
+}
+
+
+.container-chef div p {
+    color: white;
+}
+
+.signature-chef {
+    color: white;
+    font-family: Bastliga One, sans-serif;
+    font-size: 1.5rem;
+}
