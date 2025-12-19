@@ -5,7 +5,7 @@
     align-items: center;
     gap: 0.5rem;
     border: 2px;
-    border-radius: 2px;
+    border-radius: 4px;
     transition:
         background-color 150ms ease,
         color 150ms ease,

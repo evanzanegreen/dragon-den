@@ -2,8 +2,13 @@ import Hero from "../components/Hero.jsx";
 import TitleSection from "../components/TitleSection.jsx";
 import "./Home.css";
 import chefSignature from "../assets/Chef Signature.png";
+import menuData from "../data/menuData.js";
+import Card from "../components/Card.jsx";
 
 function Home() {
+  const handleQuantityChange = (id, newQty) => console.log(id, newQty);
+  const handleAddToCart = (id, qty) => console.log(id, qty);
+
   return (
     <>
       <div>
@@ -18,6 +23,10 @@ function Home() {
       </div>
 
       <TitleSection />
+
+      <section className="section-hot">
+        <div className="container-hot"></div>
+      </section>
 
       {/*Chef Message*/}
       <section className="section-chef">
@@ -38,6 +47,20 @@ function Home() {
           </div>
 
           {/*Insert Card Below*/}
+          {menuData.map((item) => (
+            <Card
+              key={item.id}
+              id={item.id}
+              variant="compact"
+              cardMediaSrc={item.mediaSrc}
+              cardMediaAlt={item.mediaAlt ?? item.title}
+              cardTitle={item.title}
+              cardPrice={item.price}
+              spiceLevel={item.spiceLevel}
+              isChefSignature={item.isChefSignature}
+              isSeasonal={item.isSeasonal}
+            />
+          ))}
         </div>
       </section>
     </>

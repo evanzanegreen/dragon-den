@@ -1,0 +1,127 @@
+.card-container {
+    min-width: 260px;
+    max-width: 360px;
+    height: auto;
+    border: 2px solid #4D4D4D;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: white;
+    will-change: transform;
+    transition: 
+        transform 250ms ease, 
+        box-shadow 250ms ease;
+}
+
+.card-container:hover {
+    transform:scale(1.03);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.card-img {
+    position: relative;
+    width: 100%;
+    min-height: 195px;
+    max-height: 270px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 4/3;
+}
+
+.card-img .card-tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.tag-chef {
+    width: 100%;
+    padding: 4px 16px;
+    background-color: #FFCD4E;
+    color: #572A00;
+    font-family: Inter, san-serif;
+    text-transform: uppercase;
+}
+
+.tag-seasonal {
+    width: 100%;
+    padding: 4px;
+    background-color: #9ED176;
+    color: #395622;
+    font-family: Inter, san-serif;
+    text-transform: uppercase;
+}
+
+.tag-spice {
+    width: auto;
+    height: auto;
+    padding: 2px 4px;
+    background-color: #EC403F;
+    color: #490100;
+    font-family: Inter, san-serif;
+    text-transform: uppercase;
+}
+
+.card-content {
+    padding: 16px;
+}
+
+.card-header {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    height: fit-content;
+}
+
+.card-title {
+    margin: 0px;
+    color: black;
+    font-family: Bebas Neue, san-serif;
+    font-size: 1.75rem;
+}
+
+.spice-level {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+}
+
+.spice-icons {
+  display: inline-flex;
+  gap: 1px;
+  align-items: center;
+  color: #710606;
+}
+
+.spice-icons svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+
+.card-price {
+    color: black;
+    font-family: Inter, san-serif;
+    font-size: 1.5rem;
+}
+
+.card-description {
+    color: black;
+    font-family: Inter, san-serif;
+    font-size: 14px;
+}
+
+.card-actions {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
