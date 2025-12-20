@@ -1,0 +1,46 @@
+.section-footer {
+    background-color: #222222;
+    color: white;
+    font-size: 12px;
+}
+
+.container-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 5rem;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
+}
+
+.content-footer { width: 48%; }
+.footer-right { width: 48%; }
+
+.footer-logo {
+    width: 120px;
+    height: auto;
+}
+
+.cliff-notes, .footer-address, .phone, .email, .hours p, .legal {
+    color: white;
+}
+
+/*.content-footer {
+    width: 48%;
+    display: block;
+}*/
+
+.section-footer h4 {
+    font-family: Bebas Neue, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+

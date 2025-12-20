@@ -18,6 +18,7 @@ function Card({
   cardMediaSrc,
   cardMediaAlt = "Card Image",
   cardTitle,
+  cardSubtitle,
   cardPrice,
   spiceLevel,
   cardDescription,
@@ -27,8 +28,9 @@ function Card({
   onQuantityChange,
   onAddToCart,
 }) {
-  const showCardPrice = variant !== "compact";
-  const showDescription = variant !== "compact";
+  const showRole = variant === "team";
+  const showCardPrice = variant !== "compact" && variant !== "team";
+  const showDescription = variant !== "compact" && variant !== "team";
   const canShowActions =
     variant === "menu" &&
     typeof onQuantityChange === "function" &&
@@ -57,6 +59,7 @@ function Card({
       <div className="card-content">
         <div className="card-header">
           <h3 className="card-title">{cardTitle}</h3>
+          {showRole && <span className="card-subtitle">{cardSubtitle}</span>}
           {showCardPrice && <span className="card-price">{cardPrice}</span>}
         </div>
 

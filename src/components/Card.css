@@ -46,7 +46,8 @@
     padding: 4px 16px;
     background-color: #FFCD4E;
     color: #572A00;
-    font-family: Inter, san-serif;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -55,18 +56,21 @@
     padding: 4px;
     background-color: #9ED176;
     color: #395622;
-    font-family: Inter, san-serif;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
 .tag-spice {
     width: auto;
     height: auto;
-    padding: 2px 4px;
+    padding: 2px 8px;
     background-color: #EC403F;
     color: #490100;
-    font-family: Inter, san-serif;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
+    border-radius: 4px;
 }
 
 .card-content {
@@ -84,7 +88,7 @@
 .card-title {
     margin: 0px;
     color: black;
-    font-family: Bebas Neue, san-serif;
+    font-family: Bebas Neue, sans-serif;
     font-size: 1.75rem;
 }
 
@@ -97,7 +101,7 @@
 
 .spice-icons {
   display: inline-flex;
-  gap: 1px;
+  gap: 0px;
   align-items: center;
   color: #710606;
 }
@@ -110,13 +114,13 @@
 
 .card-price {
     color: black;
-    font-family: Inter, san-serif;
+    font-family: Inter, sans-serif;
     font-size: 1.5rem;
 }
 
 .card-description {
     color: black;
-    font-family: Inter, san-serif;
+    font-family: Inter, sans-serif;
     font-size: 14px;
 }
 

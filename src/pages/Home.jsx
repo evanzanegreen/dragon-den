@@ -6,9 +6,6 @@ import menuData from "../data/menuData.js";
 import Card from "../components/Card.jsx";
 
 function Home() {
-  const handleQuantityChange = (id, newQty) => console.log(id, newQty);
-  const handleAddToCart = (id, qty) => console.log(id, qty);
-
   return (
     <>
       <div>
