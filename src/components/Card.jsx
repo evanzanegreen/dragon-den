@@ -12,6 +12,14 @@ const SPICE_MAP = {
   Fiery: 5,
 };
 
+const SPICE_LABELS = {
+  1: "Mild",
+  2: "Medium",
+  3: "Hot",
+  4: "Spicy",
+  5: "Fiery",
+};
+
 function Card({
   id,
   variant = "default",
@@ -35,7 +43,20 @@ function Card({
     variant === "menu" &&
     typeof onQuantityChange === "function" &&
     typeof onAddToCart === "function";
-  const spiceCount = SPICE_MAP[spiceLevel] ?? 0;
+
+  const normalizedSpice =
+    typeof spiceLevel === "string" ? spiceLevel.trim() : spiceLevel;
+
+  const spiceCount =
+    typeof normalizedSpice === "number"
+      ? normalizedSpice
+      : SPICE_MAP[normalizedSpice] ?? 0;
+
+  const spiceLabel =
+    typeof normalizedSpice === "string"
+      ? normalizedSpice
+      : SPICE_LABELS[normalizedSpice] ?? null;
+
   const spiceIcons = Array.from({ length: spiceCount });
 
   const tag = isChefSignature
@@ -59,18 +80,21 @@ function Card({
       <div className="card-content">
         <div className="card-header">
           <h3 className="card-title">{cardTitle}</h3>
-          {showRole && <span className="card-subtitle">{cardSubtitle}</span>}
           {showCardPrice && <span className="card-price">{cardPrice}</span>}
         </div>
 
-        {spiceLevel && (
+        {showRole && <span className="card-subtitle">{cardSubtitle}</span>}
+
+        {spiceCount > 0 && (
           <div className="spice-level">
             <span className="spice-icons">
               {spiceIcons.map((_, i) => (
                 <RiFireFill key={i} />
               ))}
             </span>
-            <CardTag text={spiceLevel.replace("-", "")} variant="spice" />
+
+            {/* If spiceLevel is a string like "Medium", show it. If it’s a number, show nothing or a lookup */}
+            {spiceLabel && <CardTag text={spiceLabel} variant="spice" />}
           </div>
         )}
 

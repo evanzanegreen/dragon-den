@@ -13,11 +13,13 @@ function App() {
       <NavBar />
 
       {/*Pages*/}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/menu" element={<Menu />} />
-      </Routes>
+      <main className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/menu" element={<Menu />} />
+        </Routes>
+      </main>
 
       {/*Footer*/}
       <Footer />

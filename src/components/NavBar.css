@@ -2,15 +2,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     height: auto;
     padding: 1rem 5rem;
-    background-color: black;
-    z-index: 1000;
-    position: sticky;
+    background-color: #222222;
+    position: fixed;
     top: 0;
-
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
+
 
 .logo-box {
     width: 6rem;

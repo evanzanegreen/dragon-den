@@ -6,6 +6,8 @@ import menuData from "../data/menuData.js";
 import Card from "../components/Card.jsx";
 
 function Home() {
+  const jerkChicken = menuData.find((item) => item.id === "ent-jerk-chicken");
+
   return (
     <>
       <div>
@@ -19,11 +21,14 @@ function Home() {
         />
       </div>
 
-      <TitleSection />
-
-      <section className="section-hot">
-        <div className="container-hot"></div>
-      </section>
+      <TitleSection
+        line1="Authentic Caribbean Flavors"
+        line2="Bold Spices & an Unforgettable Atmosphere"
+        paragraphs={[
+          "At Dragon Den, every dish tells a story rooted in Caribbean tradition and elevated by bold, modern flavors. From slow-simmered spices to vibrant, freshly prepared ingredients, our menu is crafted to bring warmth, energy, and authenticity to every table.",
+          "At Dragon Den, every dish tells a story rooted in Caribbean tradition and elevated by bold, modern flavors. From slow-simmered spices to vibrant, freshly prepared ingredients, our menu is crafted to bring warmth, energy, and authenticity to every table.",
+        ]}
+      />
 
       {/*Chef Message*/}
       <section className="section-chef">
@@ -44,20 +49,21 @@ function Home() {
           </div>
 
           {/*Insert Card Below*/}
-          {menuData.map((item) => (
+          {jerkChicken ? (
             <Card
-              key={item.id}
-              id={item.id}
+              key={jerkChicken.id}
+              id={jerkChicken.id}
               variant="compact"
-              cardMediaSrc={item.mediaSrc}
-              cardMediaAlt={item.mediaAlt ?? item.title}
-              cardTitle={item.title}
-              cardPrice={item.price}
-              spiceLevel={item.spiceLevel}
-              isChefSignature={item.isChefSignature}
-              isSeasonal={item.isSeasonal}
+              cardMediaSrc={jerkChicken.mediaSrc}
+              cardMediaAlt={jerkChicken.mediaAlt}
+              cardTitle={jerkChicken.title}
+              spiceLevel={jerkChicken.spiceLevel}
+              isChefSignature={jerkChicken.isChefSignature}
+              isSeasonal={jerkChicken.isSeasonal}
             />
-          ))}
+          ) : (
+            <p>Jerk chicken item not found. Check the id.</p>
+          )}
         </div>
       </section>
     </>

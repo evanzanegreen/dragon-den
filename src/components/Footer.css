@@ -1,42 +1,62 @@
 .section-footer {
-    background-color: #222222;
-    color: white;
-    font-size: 12px;
+  background-color: #222222;
+  color: white;
+  font-size: 12px;
+  padding: 64px 0; /* vertical padding belongs here */
 }
 
 .container-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;   /* pick one max width */
+  margin-inline: auto;
+  padding: 64px 24px;  /* vertical + horizontal padding */
+}
+
+.footer {
+  width: 100%;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
+
+.footer-inner {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  max-width: none;
 }
 
 .footer-columns {
   display: flex;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 48px;
   width: 100%;
+  align-items: flex-start;
 }
 
-.content-footer { width: 48%; }
-.footer-right { width: 48%; }
+.content-footer { 
+    flex: 1.2; 
+    min-width: 280px; 
+}
+
+.footer-right { 
+    flex: 1; 
+    min-width: 280px; 
+}
 
 .footer-logo {
-    width: 120px;
-    height: auto;
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
 .cliff-notes, .footer-address, .phone, .email, .hours p, .legal {
     color: white;
+    margin-top: 0px;
 }
-
-/*.content-footer {
-    width: 48%;
-    display: block;
-}*/
 
 .section-footer h4 {
     font-family: Bebas Neue, sans-serif;
@@ -44,3 +64,13 @@
     margin-bottom: 0.5rem;
 }
 
+.socials {
+  display: flex;
+  gap: 16px;        /* space between icons */
+  font-size: 24px;  /* controls icon size */
+  align-items: center;
+}
+
+.visit {
+    margin-top: 0px;
+}

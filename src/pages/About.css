@@ -1,0 +1,41 @@
+.section-team {
+    width: 100%;
+}
+
+.container-team {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 5rem;
+}
+
+.header-team {
+    font-family: Bebas Neue, sans-serif;
+    text-transform: uppercase;
+    margin: 0px;
+    color: black;
+}
+
+
+.container-team p {
+    color: black;
+    padding-bottom: 2rem;
+}
+
+.team-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.team-list > * {
+  min-width: 0;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+

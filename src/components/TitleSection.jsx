@@ -1,26 +1,15 @@
 import "./TitleSection.css";
 
-function TitleSection() {
+function TitleSection({ line1, line2, paragraphs = [] }) {
   return (
     <>
       <section className="section">
         <div className="container">
-          <h1 className="header line1">Authentic Caribbean Flavors</h1>
-          <h1 className="header line2">
-            Bold Spices & an Unforgettable Atmosphere
-          </h1>
-          <p>
-            At Dragon Den, every dish tells a story rooted in Caribbean
-            tradition and elevated by bold, modern flavors. From slow-simmered
-            spices to vibrant, freshly prepared ingredients, our menu is crafted
-            to bring warmth, energy, and authenticity to every table.
-          </p>
-          <p>
-            At Dragon Den, every dish tells a story rooted in Caribbean
-            tradition and elevated by bold, modern flavors. From slow-simmered
-            spices to vibrant, freshly prepared ingredients, our menu is crafted
-            to bring warmth, energy, and authenticity to every table.
-          </p>
+          <h1 className="header line1">{line1}</h1>
+          <h1 className="header line2">{line2}</h1>
+          {paragraphs.map((text, index) => (
+            <p key={index}>{text}</p>
+          ))}
         </div>
       </section>
     </>

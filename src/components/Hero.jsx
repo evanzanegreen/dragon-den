@@ -13,7 +13,7 @@ function Hero({
       {/*Background Media*/}
       {mediaType === "video" ? (
         <video
-          className="hero-bg"
+          className="hero-bg hero-bg-video"
           src={mediaSrc}
           autoPlay
           loop
@@ -21,16 +21,8 @@ function Hero({
           playsInline
         />
       ) : (
-        <img className="hero-bg" src={mediaSrc} alt={altText} />
+        <img className="hero-bg hero-bg-img" src={mediaSrc} alt={altText} />
       )}
-      <video
-        className="hero-bg"
-        src="/video/home-hero-2.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
 
       {/*Hero Overlay*/}
       <div
