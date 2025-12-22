@@ -119,6 +119,18 @@ const menuData = [
     isSeasonal: false,
   },
   {
+  id: "side-house-roti",
+  title: "House Roti",
+  price: 4,
+  description: "Soft, flaky roti bread served warm.",
+  spiceLevel: "Mild",
+  category: "sides",
+  isChefSignature: false,
+  isSeasonal: false,
+  mediaSrc: "/menu-img/side-house-roti.png",
+  mediaAlt: "Warm house-made roti bread",
+  },
+  {
     id: "side-cabbage",
     title: "Steamed Cabbage",
     description: "Lightly seasoned cabbage sautéed with carrots and herbs.",
@@ -129,6 +141,18 @@ const menuData = [
     mediaAlt: "Steamed cabbage",
     isChefSignature: false,
     isSeasonal: false,
+  },
+  {
+  id: "side-golden-island-fries",
+  title: "Golden Island Fries",
+  price: 3,
+  description: "Crispy golden fries, lightly seasoned and served fresh.",
+  spiceLevel: "Mild",
+  category: "kids",
+  isChefSignature: false,
+  isSeasonal: false,
+  mediaSrc: "/menu-img/side-golden-island-fries.png",
+  mediaAlt: "Golden Island Fries served hot and crispy",
   },
 
   /* =======================
@@ -157,6 +181,18 @@ const menuData = [
     mediaAlt: "Coconut tart",
     isChefSignature: false,
     isSeasonal: false,
+  },
+  {
+  id: "des-tamarind-spice-balls",
+  title: "Tamarind Spice Balls",
+  price: 4,
+  description: "Sweet and tangy tamarind treats rolled with sugar and warming spices.",
+  spiceLevel: "Mild",
+  category: "desserts",
+  isChefSignature: false,
+  isSeasonal: false,
+  mediaSrc: "/menu-img/des-tamarind-spice-balls.png",
+  mediaAlt: "Sweet and tangy tamarind spice balls",
   },
 
   /* =======================
