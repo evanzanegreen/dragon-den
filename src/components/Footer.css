@@ -62,6 +62,7 @@
     font-family: Bebas Neue, sans-serif;
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    color: white;
 }
 
 .socials {
@@ -69,6 +70,7 @@
   gap: 16px;        /* space between icons */
   font-size: 24px;  /* controls icon size */
   align-items: center;
+  color: white;
 }
 
 .visit {

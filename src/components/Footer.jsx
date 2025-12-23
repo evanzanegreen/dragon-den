@@ -35,7 +35,7 @@ function Footer() {
                     © 2025 Dragon Den. All rights reserved.
                   </p>
 
-                  <h4>Talk to Us</h4>
+                  <h4 className="talk">Talk to Us</h4>
                   <p className="phone">(201) 289-1023</p>
                   <p className="email">hello@dragonden.com</p>
 

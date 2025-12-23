@@ -1,0 +1,68 @@
+const MENU_CATEGORIES = [
+    {
+        id: "appetizers",
+        label: "Appetizers",
+        description: "Small plates and starters meant to be shared and enjoyed together.",
+        order: 1,
+        icon: "/menu-icon/appetizers.png",
+        heroimage: "/menu-hero/appetizers.jpg",
+    },
+    {
+        id: "entrees",
+        label: "Entrees",
+        description: "Bold, hearty dishes rooted in Caribbean tradition and big flavor.",
+        order: 2,
+        icon: "/menu-icon/entrees.png",
+        heroimage: "/menu-hero/entrees.jpg",
+    },
+    {
+        id: "sides",
+        label: "Sides",
+        description: "Classic accompaniments that round out every plate at the table.",
+        order: 3,
+        icon: "/menu-icon/sides.png",
+        heroimage: "/menu-hero/sides.jpg",
+    },
+    {
+        id: "desserts",
+        label: "Desserts",
+        description: "Sweet finishes inspired by island flavors and family favorites.",
+        order: 4,
+        icon: "/menu-icon/desserts.png",
+        heroimage: "/menu-hero/desserts.jpg",
+    },
+    {
+        id: "drinks",
+        label: "Drinks",
+        description: "Refreshing sips, from tropical classics to non-alcoholic favorites.",
+        order: 5,
+        icon: "/menu-icon/drinks.png",
+        heroimage: "/menu-hero/drinks.jpg",
+    },
+    {
+        id: "tea-coffe",
+        label: "Tea & Coffee",
+        descrption: "Hot and comforting favorites to sip alongside any meal.",
+        order: 6,
+        icon: "/menu-icon/tea-coffee.png",
+        heroimage: "/menu-hero/tea-coffee.jpg",
+    },
+    {
+        id: "specials",
+        label: "Specials",
+        descrption: "Limited-time dishes and seasonal highlights worth discovering.",
+        order: 7,
+        icon: "/menu-icon/specials.png",
+        heroimage: "/menu-hero/specials.jpg",
+    },
+    {
+        id: "kids",
+        label: "Kids Menu",
+        descrption: "Simple, familiar favorites made just for smaller appetites.",
+        order: 8,
+        icon: "/menu-icon/kids.png",
+        heroimage: "/menu-hero/kids.jpg",
+    },
+];
+
+export default MENU_CATEGORIES;
