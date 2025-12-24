@@ -1,10 +1,19 @@
+import { MdTapas } from "react-icons/md";
+import { PiForkKnifeBold } from "react-icons/pi";
+import { CiFries } from "react-icons/ci";
+import { LuCakeSlice } from "react-icons/lu";
+import { RiDrinks2Line } from "react-icons/ri";
+import { TbCoffee } from "react-icons/tb";
+import { TbStars } from "react-icons/tb";
+import { BsBalloon } from "react-icons/bs";
+
 const MENU_CATEGORIES = [
     {
         id: "appetizers",
         label: "Appetizers",
         description: "Small plates and starters meant to be shared and enjoyed together.",
         order: 1,
-        icon: "/menu-icon/appetizers.png",
+        icon: MdTapas,
         heroimage: "/menu-hero/appetizers.jpg",
     },
     {
@@ -12,7 +21,7 @@ const MENU_CATEGORIES = [
         label: "Entrees",
         description: "Bold, hearty dishes rooted in Caribbean tradition and big flavor.",
         order: 2,
-        icon: "/menu-icon/entrees.png",
+        icon: PiForkKnifeBold,
         heroimage: "/menu-hero/entrees.jpg",
     },
     {
@@ -20,7 +29,7 @@ const MENU_CATEGORIES = [
         label: "Sides",
         description: "Classic accompaniments that round out every plate at the table.",
         order: 3,
-        icon: "/menu-icon/sides.png",
+        icon: CiFries,
         heroimage: "/menu-hero/sides.jpg",
     },
     {
@@ -28,7 +37,7 @@ const MENU_CATEGORIES = [
         label: "Desserts",
         description: "Sweet finishes inspired by island flavors and family favorites.",
         order: 4,
-        icon: "/menu-icon/desserts.png",
+        icon: LuCakeSlice,
         heroimage: "/menu-hero/desserts.jpg",
     },
     {
@@ -36,15 +45,15 @@ const MENU_CATEGORIES = [
         label: "Drinks",
         description: "Refreshing sips, from tropical classics to non-alcoholic favorites.",
         order: 5,
-        icon: "/menu-icon/drinks.png",
+        icon: RiDrinks2Line,
         heroimage: "/menu-hero/drinks.jpg",
     },
     {
-        id: "tea-coffe",
+        id: "tea-coffee",
         label: "Tea & Coffee",
         descrption: "Hot and comforting favorites to sip alongside any meal.",
         order: 6,
-        icon: "/menu-icon/tea-coffee.png",
+        icon: TbCoffee,
         heroimage: "/menu-hero/tea-coffee.jpg",
     },
     {
@@ -52,7 +61,7 @@ const MENU_CATEGORIES = [
         label: "Specials",
         descrption: "Limited-time dishes and seasonal highlights worth discovering.",
         order: 7,
-        icon: "/menu-icon/specials.png",
+        icon: TbStars,
         heroimage: "/menu-hero/specials.jpg",
     },
     {
@@ -60,7 +69,7 @@ const MENU_CATEGORIES = [
         label: "Kids Menu",
         descrption: "Simple, familiar favorites made just for smaller appetites.",
         order: 8,
-        icon: "/menu-icon/kids.png",
+        icon: BsBalloon,
         heroimage: "/menu-hero/kids.jpg",
     },
 ];

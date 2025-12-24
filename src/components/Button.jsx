@@ -3,6 +3,7 @@ import "./Button.css";
 function Button({
   size = "md",
   variant = "primary",
+  className = "",
   children,
   leftIcon = null,
   leftIconVisible = true,
@@ -22,7 +23,10 @@ function Button({
   const showRightIcon = rightIcon && rightIconVisible;
 
   return (
-    <button className={`btn ${sizeClass} ${variantClass}`} {...rest}>
+    <button
+      className={`btn ${sizeClass} ${variantClass} ${className}`}
+      {...rest}
+    >
       {showLeftIcon && <span className="btn-icon">{leftIcon}</span>}
       <span className="btn-text">
         <strong>{children}</strong>
