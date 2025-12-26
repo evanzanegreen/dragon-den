@@ -14,7 +14,6 @@ const MENU_CATEGORIES = [
         description: "Small plates and starters meant to be shared and enjoyed together.",
         order: 1,
         icon: MdTapas,
-        heroimage: "/menu-hero/appetizers.jpg",
     },
     {
         id: "entrees",
@@ -22,7 +21,6 @@ const MENU_CATEGORIES = [
         description: "Bold, hearty dishes rooted in Caribbean tradition and big flavor.",
         order: 2,
         icon: PiForkKnifeBold,
-        heroimage: "/menu-hero/entrees.jpg",
     },
     {
         id: "sides",
@@ -30,7 +28,6 @@ const MENU_CATEGORIES = [
         description: "Classic accompaniments that round out every plate at the table.",
         order: 3,
         icon: CiFries,
-        heroimage: "/menu-hero/sides.jpg",
     },
     {
         id: "desserts",
@@ -38,7 +35,6 @@ const MENU_CATEGORIES = [
         description: "Sweet finishes inspired by island flavors and family favorites.",
         order: 4,
         icon: LuCakeSlice,
-        heroimage: "/menu-hero/desserts.jpg",
     },
     {
         id: "drinks",
@@ -46,7 +42,6 @@ const MENU_CATEGORIES = [
         description: "Refreshing sips, from tropical classics to non-alcoholic favorites.",
         order: 5,
         icon: RiDrinks2Line,
-        heroimage: "/menu-hero/drinks.jpg",
     },
     {
         id: "tea-coffee",
@@ -54,7 +49,6 @@ const MENU_CATEGORIES = [
         descrption: "Hot and comforting favorites to sip alongside any meal.",
         order: 6,
         icon: TbCoffee,
-        heroimage: "/menu-hero/tea-coffee.jpg",
     },
     {
         id: "specials",
@@ -62,7 +56,6 @@ const MENU_CATEGORIES = [
         descrption: "Limited-time dishes and seasonal highlights worth discovering.",
         order: 7,
         icon: TbStars,
-        heroimage: "/menu-hero/specials.jpg",
     },
     {
         id: "kids",
@@ -70,7 +63,6 @@ const MENU_CATEGORIES = [
         descrption: "Simple, familiar favorites made just for smaller appetites.",
         order: 8,
         icon: BsBalloon,
-        heroimage: "/menu-hero/kids.jpg",
     },
 ];
 

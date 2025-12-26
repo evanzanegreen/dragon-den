@@ -12,7 +12,7 @@ function About() {
           mediaType="image"
           mediaSrc="/about-hero.jpg"
           mediaAlt="About Hero"
-          overlayOpacity={0.85}
+          overlayOpacity={0.65}
           smTitle="BOLD FLAVORS, OUR"
           title="SOUL."
         />
