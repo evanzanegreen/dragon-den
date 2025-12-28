@@ -123,9 +123,12 @@ body {
   margin: 0 0 0.5rem 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
   font-size: 2rem;
   color: white;
   line-height: 1;
+  
 }
 
 .menu-category-hero-headline {
@@ -157,6 +160,7 @@ body {
 .menu-caategory-hero-subcopy {
   margin: 0;
   max-width: 55ch;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: white;
 }
@@ -214,19 +218,60 @@ body {
   }
 
   /* Hover only on non-touch devices */
-@media (hover: hover) {
-  .menu-tab:hover {
-    background-color: rgba(0,0,0,0.25);
-    border: 2px solid black;
-    color: black;
+  @media (hover: hover) {
+    .menu-tab:hover {
+      background-color: rgba(0,0,0,0.25);
+      border: 2px solid black;
+      color: black;
+    }
+  }
+
+  /* Active tab (React state) */
+  .menu-tab.is-active {
+    background-color: #FFB5B4;
+    border: 2px solid #490100;
+    color: #490100;
   }
 }
 
-/* Active tab (React state) */
-.menu-tab.is-active {
-  background-color: #FFB5B4;
-  border: 2px solid #490100;
-  color: #490100;
+/*Menu Items*/
+.menu-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
+@media (max-width: 1024px) {
+  .menu-items-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-items-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.menu-empty-state {
+  margin-top: 2rem;
+  padding: 3rem 2rem;
+  border: 2px dashed rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.menu-empty-state h3 {
+  margin: 0 0 0.5rem 0;
+  font-family: Bebas Neue, sans-serif;
+  text-transform: uppercase;
+}
+
+.menu-empty-state p {
+  margin: 0;
+  max-width: 40ch;
+  margin-inline: auto;
 }

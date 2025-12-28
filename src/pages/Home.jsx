@@ -54,9 +54,9 @@ function Home() {
               key={jerkChicken.id}
               id={jerkChicken.id}
               variant="compact"
-              cardMediaSrc={jerkChicken.mediaSrc}
-              cardMediaAlt={jerkChicken.mediaAlt}
-              cardTitle={jerkChicken.title}
+              mediaSrc={jerkChicken.mediaSrc}
+              mediaAlt={jerkChicken.mediaAlt}
+              title={jerkChicken.title}
               spiceLevel={jerkChicken.spiceLevel}
               isChefSignature={jerkChicken.isChefSignature}
               isSeasonal={jerkChicken.isSeasonal}

@@ -20,22 +20,24 @@ const SPICE_LABELS = {
   5: "Fiery",
 };
 
-function Card({
-  id,
-  variant = "default",
-  cardMediaSrc,
-  cardMediaAlt = "Card Image",
-  cardTitle,
-  cardSubtitle,
-  cardPrice,
-  spiceLevel,
-  cardDescription,
-  isChefSignature = false,
-  isSeasonal = false,
-  quantity,
-  onQuantityChange,
-  onAddToCart,
-}) {
+function Card(props) {
+  const {
+    id,
+    title,
+    subtitle,
+    price,
+    description,
+    spiceLevel,
+    mediaSrc,
+    mediaAlt,
+    isChefSignature,
+    isSeasonal,
+    variant,
+    quantity = 0,
+    onQuantityChange,
+    onAddToCart,
+  } = props;
+
   const showRole = variant === "team";
   const showCardPrice = variant !== "compact" && variant !== "team";
   const showDescription = variant !== "compact" && variant !== "team";
@@ -69,59 +71,59 @@ function Card({
   const handleDecrement = () => onQuantityChange(id, Math.max(quantity - 1, 0));
 
   return (
-    <div className="card-container">
-      {/*Card Image*/}
-      <div className="card-img">
-        <img src={cardMediaSrc} alt={cardMediaAlt} />
-        {tag && <CardTag text={tag.text} variant={tag.variant} />}
-      </div>
-
-      {/*Card Content*/}
-      <div className="card-content">
-        <div className="card-header">
-          <h3 className="card-title">{cardTitle}</h3>
-          {showCardPrice && <span className="card-price">{cardPrice}</span>}
+    <>
+      <div className={`card-container card-${variant ?? "default"}`}>
+        {/*Card Image*/}
+        <div className="card-img">
+          <img src={mediaSrc} alt={mediaAlt} />
+          {tag && <CardTag text={tag.text} variant={tag.variant} />}
         </div>
 
-        {showRole && <span className="card-subtitle">{cardSubtitle}</span>}
-
-        {spiceCount > 0 && (
-          <div className="spice-level">
-            <span className="spice-icons">
-              {spiceIcons.map((_, i) => (
-                <RiFireFill key={i} />
-              ))}
-            </span>
-
-            {/* If spiceLevel is a string like "Medium", show it. If it’s a number, show nothing or a lookup */}
-            {spiceLabel && <CardTag text={spiceLabel} variant="spice" />}
+        {/*Card Content*/}
+        <div className="card-content">
+          <div className="card-header">
+            <h3 className="card-title">{title}</h3>
+            {showCardPrice && <span className="card-price">{price}</span>}
           </div>
-        )}
 
-        {/*Card Description*/}
-        {showDescription && (
-          <p className="card-description">{cardDescription}</p>
-        )}
+          {showRole && <span className="card-subtitle">{subtitle}</span>}
 
-        {/*Card Actions*/}
-        {canShowActions && (
-          <div className="card-actions">
-            <QuantityControl
-              value={quantity}
-              onIncrement={handleIncrement}
-              onDecrement={handleDecrement}
-            />
-            <Button
-              size="md"
-              variant="primary"
-              onClick={() => onAddToCart(id, quantity)}
-            >
-              Add to Cart
-            </Button>
-          </div>
-        )}
+          {spiceCount > 0 && (
+            <div className="spice-level">
+              <span className="spice-icons">
+                {spiceIcons.map((_, i) => (
+                  <RiFireFill key={i} />
+                ))}
+              </span>
+
+              {/* If spiceLevel is a string like "Medium", show it. If it’s a number, show nothing or a lookup */}
+              {spiceLabel && <CardTag text={spiceLabel} variant="spice" />}
+            </div>
+          )}
+
+          {/*Card Description*/}
+          {showDescription && <p className="card-description">{description}</p>}
+
+          {/*Card Actions*/}
+          {canShowActions && (
+            <div className="card-actions">
+              <QuantityControl
+                value={quantity}
+                onIncrement={handleIncrement}
+                onDecrement={handleDecrement}
+              />
+              <Button
+                size="md"
+                variant="primary"
+                onClick={() => onAddToCart(id, quantity)}
+              >
+                Add to Cart
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

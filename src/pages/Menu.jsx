@@ -4,6 +4,7 @@ import menuCategories from "../config/menuCategories.js";
 import "./Menu.css";
 import Hero from "../components/Hero.jsx";
 import Button from "../components/Button.jsx";
+import Card from "../components/Card.jsx";
 import appetizersHero from "../assets/illustrations/categories/category-appetizers.png";
 import entreesHero from "../assets/illustrations/categories/category-entrees.png";
 import sidesHero from "../assets/illustrations/categories/category-sides.png";
@@ -119,6 +120,8 @@ function Menu() {
     (a, b) => a.order - b.order
   );
 
+  const isEmptyCategory = sortedItems.length === 0;
+
   return (
     <>
       <div>
@@ -167,7 +170,9 @@ function Menu() {
             <div className="menu-category-hero-overlay"></div>
 
             <div className="menu-category-hero-text">
-              <p className="menu-category-hero-kicker">On the Menu</p>
+              <p className="menu-category-hero-kicker">
+                <strong>On the Menu</strong>
+              </p>
               <h2 className="menu-category-hero-headline">
                 {heroContent.headline}
               </h2>
@@ -187,11 +192,21 @@ function Menu() {
           </section>
 
           {/*Menu Cards Here*/}
-          <ul>
-            {sortedItems.map((item) => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-          </ul>
+          {isEmptyCategory ? (
+            <div className="menu-empty-state">
+              <h3>Coming Soon!</h3>
+              <p>
+                We’re working on something new here. Check back soon for more
+                updates.
+              </p>
+            </div>
+          ) : (
+            <div className="menu-items-grid">
+              {sortedItems.map((item) => (
+                <Card key={item.id} variant="menu" {...item} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </>

@@ -18,19 +18,24 @@
 }
 
 .card-img {
-    position: relative;
-    width: 100%;
-    min-height: 195px;
-    max-height: 270px;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
 .card-img img {
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 4/3;
+  width: 100%;
+  height: auto;      /* key: prevents the bottom gap issue */
+  display: block;
+}
+
+.card-menu .card-img {
+  height: 270px;     /* or whatever you want for menu */
+}
+
+.card-menu .card-img img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .card-img .card-tag {

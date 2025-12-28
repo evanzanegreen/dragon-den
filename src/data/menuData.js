@@ -215,7 +215,7 @@ const menuData = [
   category: "desserts",
   isChefSignature: false,
   isSeasonal: false,
-  mediaSrc: "/menu-img/des-tamarind-spice-balls.png",
+  mediaSrc: "/menu-img/dessert-tamarind-spice-balls.png",
   mediaAlt: "Sweet and tangy tamarind spice balls",
   },
 

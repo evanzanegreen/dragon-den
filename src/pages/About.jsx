@@ -43,10 +43,10 @@ function About() {
                 key={team.id}
                 id={team.id}
                 variant="team"
-                cardMediaSrc={team.mediaSrc}
-                cardMediaAlt={team.mediaAlt}
-                cardTitle={team.name}
-                cardSubtitle={team.role}
+                mediaSrc={team.mediaSrc}
+                mediaAlt={team.mediaAlt}
+                title={team.name}
+                subtitle={team.role}
               />
             ))}
           </div>
