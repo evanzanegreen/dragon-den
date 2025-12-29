@@ -1,6 +1,5 @@
 import QuantityControl from "./QuantityControl";
 import CardTag from "./CardTag";
-import Button from "./Button";
 import { RiFireFill } from "react-icons/ri";
 import "./Card.css";
 
@@ -35,16 +34,16 @@ function Card(props) {
     variant,
     quantity = 0,
     onQuantityChange,
-    onAddToCart,
+    onCardClick,
   } = props;
 
   const showRole = variant === "team";
   const showCardPrice = variant !== "compact" && variant !== "team";
   const showDescription = variant !== "compact" && variant !== "team";
-  const canShowActions =
+  const canShowQuantityControl =
     variant === "menu" &&
     typeof onQuantityChange === "function" &&
-    typeof onAddToCart === "function";
+    quantity > 0;
 
   const normalizedSpice =
     typeof spiceLevel === "string" ? spiceLevel.trim() : spiceLevel;
@@ -72,7 +71,12 @@ function Card(props) {
 
   return (
     <>
-      <div className={`card-container card-${variant ?? "default"}`}>
+      <div
+        className={`card-container card-${variant ?? "default"}`}
+        onClick={variant === "menu" ? () => onCardClick?.(id) : undefined}
+        role={variant === "menu" ? "button" : undefined}
+        tabIndex={variant === "menu" ? 0 : undefined}
+      >
         {/*Card Image*/}
         <div className="card-img">
           <img src={mediaSrc} alt={mediaAlt} />
@@ -105,20 +109,13 @@ function Card(props) {
           {showDescription && <p className="card-description">{description}</p>}
 
           {/*Card Actions*/}
-          {canShowActions && (
-            <div className="card-actions">
+          {canShowQuantityControl && (
+            <div className="card-actions" onClick={(e) => e.stopPropagation()}>
               <QuantityControl
                 value={quantity}
                 onIncrement={handleIncrement}
                 onDecrement={handleDecrement}
               />
-              <Button
-                size="md"
-                variant="primary"
-                onClick={() => onAddToCart(id, quantity)}
-              >
-                Add to Cart
-              </Button>
             </div>
           )}
         </div>

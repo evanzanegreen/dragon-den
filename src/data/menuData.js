@@ -261,7 +261,7 @@ const menuData = [
   {
     id: "drink-fountain",
     title: "Fountain Soda",
-    description: "Coke, Sprite, Fanta, Ting, Ginger Beer, Kola Champagne.",
+    description: "Coke, Sprite, Fanta, Ting, Ginger Ale, Kola Champagne.",
     price: 4,
     spiceLevel: 1,
     category: "drinks",

@@ -119,18 +119,25 @@
 
 .card-price {
     color: black;
-    font-family: Inter, sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 1.5rem;
 }
 
 .card-description {
     color: black;
-    font-family: Inter, sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 14px;
+    line-height: 1.4;
+    min-height: calc(1.4em * 3);
+    display:-webkit-box;
+    line-clamp: 3; /*number of lines*/
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card-actions {
     display: inline-flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }

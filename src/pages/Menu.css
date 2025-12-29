@@ -27,39 +27,38 @@ body {
     gap: 12px;
 }
 
-.menu-tab {
-    flex: 1;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 4px;
-    color: black;
-    text-transform: uppercase;
+.menu-tab.btn-ghost {
+  flex: 1;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 4px;
+  color: black;
+  text-transform: uppercase;
 }
 
-.menu-tab:hover {
-    background-color: rgba(0,0,0,0.25);
-    border: 2px solid black;
-    border-radius: 4px;
-    color: black;
+.menu-tab.btn-ghost:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 2px solid black;
+  color: black;
 }
 
-.menu-tab:active {
+.menu-tab.btn-ghost:active {
     background-color: #FFB5B4;
     border: 2px solid #490100;
     border-radius: 4px;
     color: #490100;
 }
 
+.menu-tab.btn-ghost:focus-visible {
+    outline: 2px solid #000000;
+    border: 2px solid #490100;
+    outline-offset: 3px;
+}
+
 .menu-tab.is-active {
   background-color: #FFB5B4;
   border: 2px solid #490100;
   color: #490100;
-}
-
-.menu-tab:focus-visible {
-    outline: 2px solid #000000;
-    border: 2px solid #490100;
-    outline-offset: 3px;
 }
 
 /*Category Hero*/
@@ -120,11 +119,11 @@ body {
 }
 
 .menu-category-hero-kicker {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-family: "Inter", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 2rem;
   color: white;
   line-height: 1;
@@ -140,15 +139,6 @@ body {
   max-width: 24ch;
 }
 
-.menu-tab {
-  flex: 1;
-  background-color: transparent;
-  border: 2px solid black;
-  border-radius: 4px;
-  color: black;
-  text-transform: uppercase;
-}
-
 @media (min-width: 1024px) {
   .menu-category-hero-headline {
     white-space: nowrap;
@@ -157,7 +147,7 @@ body {
   }
 }
 
-.menu-caategory-hero-subcopy {
+.menu-category-hero-subcopy {
   margin: 0;
   max-width: 55ch;
   font-family: "Inter", sans-serif;

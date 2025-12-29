@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import menuData from "../data/menuData.js";
 import menuCategories from "../config/menuCategories.js";
 import "./Menu.css";
@@ -65,7 +65,7 @@ const categoryHeroMap = {
     backgroundSrc: drinksBg,
   },
   "tea-coffee": {
-    headline: "Slow Sips.",
+    headline: "Comfy Sips.",
     subcopy: "Hot and comforting favorites to sip alongside any meal.",
     imageSrc: teaCoffeeHero,
     imageAlt: "Tea and coffee hero illustration",
@@ -96,6 +96,7 @@ const categoryHeroMap = {
 
 function Menu() {
   const [activeCategory, setActiveCategory] = useState(menuCategories[1].id);
+  const [itemQuantities, setItemQuantities] = useState({});
   const heroContent =
     categoryHeroMap[activeCategory] ?? categoryHeroMap.default;
   const filteredItems = menuData.filter(
@@ -121,6 +122,22 @@ function Menu() {
   );
 
   const isEmptyCategory = sortedItems.length === 0;
+
+  const handleQuantityChange = (id, nextQty) => {
+    setItemQuantities((prev) => {
+      const updated = { ...prev };
+      if (nextQty <= 0) delete updated[id];
+      else updated[id] = nextQty;
+      return updated;
+    });
+  };
+
+  const handleCardClickAdd = (id) => {
+    setItemQuantities((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1,
+    }));
+  };
 
   return (
     <>
@@ -176,7 +193,7 @@ function Menu() {
               <h2 className="menu-category-hero-headline">
                 {heroContent.headline}
               </h2>
-              <p className="menu-caategory-hero-subcopy">
+              <p className="menu-category-hero-subcopy">
                 {heroContent.subcopy}
               </p>
             </div>
@@ -203,7 +220,14 @@ function Menu() {
           ) : (
             <div className="menu-items-grid">
               {sortedItems.map((item) => (
-                <Card key={item.id} variant="menu" {...item} />
+                <Card
+                  key={item.id}
+                  variant="menu"
+                  {...item}
+                  quantity={itemQuantities[item.id] || 0}
+                  onCardClick={handleCardClickAdd}
+                  onQuantityChange={handleQuantityChange}
+                />
               ))}
             </div>
           )}
