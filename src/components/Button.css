@@ -106,15 +106,16 @@
 
 .btn-ghost {
     background-color: transparent;
-    color: #490100; 
-    border-color: #490100;
+    color: black; 
+    border-color: black;
+    border: 2px solid;
 }
 
 .btn-ghost:hover {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.25);
     color: #490100; 
     border-color: #490100;
-    border: 2px;
+    border: 2px solid;
 }
 
 .btn-ghost:active {
@@ -123,4 +124,5 @@
 
 .btn-ghost:focus-visible {
     outline-color:#490100;
+    outline-offset: 3px;
 }

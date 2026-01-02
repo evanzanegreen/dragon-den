@@ -1,0 +1,57 @@
+.section-cart {
+    background-color: #CCCCCC;
+    width: 100%;
+}
+
+.container-cart {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 5rem;
+    color: black;
+}
+
+.container-cart h2 {
+    font-family: "Bebas Neue", sans-serif;
+    margin-top: 0px;
+}
+
+.cart-items-empty {
+   font-family: "Inter", sans-serif; 
+   padding-bottom: 8px;
+}
+
+.cart-items {
+    font-family: "Inter", sans-serif;
+    border-bottom: 2px solid black;
+}
+
+.cart-total {
+    font-family: "Inter", sans-serif;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.line-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 8px;
+}
+
+.actions {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.btn-icon {
+    font-size: 24px;
+}
+
+.order {
+    display: flex;
+    width: 100%;
+}

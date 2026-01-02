@@ -58,7 +58,7 @@
 
 .tag-seasonal {
     width: 100%;
-    padding: 4px;
+    padding: 4px 16px;
     background-color: #9ED176;
     color: #395622;
     font-family: Inter, sans-serif;

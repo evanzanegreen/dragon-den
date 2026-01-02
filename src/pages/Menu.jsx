@@ -1,10 +1,23 @@
-import { useState, useEffect } from "react";
-import menuData from "../data/menuData.js";
-import menuCategories from "../config/menuCategories.js";
+//================================================================
+//Menu.jsx
+//Responsibility: Page level orchestration for the Menu view.
+//-Owns category selection
+//-Owns cart quantity state (itemQuantities)
+//-Derives filtered (that is a type of sorting) menu items
+//Renders Hero, Tabs, Category Hero, Item Cards and Cart Surface
+//================================================================
+
+import { useState } from "react";
+import menuData from "../data/menuData.js"; //Static catalog that contains: title, price, id, category, etc.
+import menuCategories from "../config/menuCategories.js"; //Static config: category list + ordering (organization, not purchase)
 import "./Menu.css";
+
+import Cart from "../components/Cart.jsx";
 import Hero from "../components/Hero.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
+
+//Assets for category hero content (illustrations + background images)
 import appetizersHero from "../assets/illustrations/categories/category-appetizers.png";
 import entreesHero from "../assets/illustrations/categories/category-entrees.png";
 import sidesHero from "../assets/illustrations/categories/category-sides.png";
@@ -13,6 +26,7 @@ import drinksHero from "../assets/illustrations/categories/category-drinks.png";
 import teaCoffeeHero from "../assets/illustrations/categories/category-tea-coffee.png";
 import specialsHero from "../assets/illustrations/categories/category-specials.png";
 import kidsHero from "../assets/illustrations/categories/category-kids.png";
+
 import appetizersBg from "../assets/illustrations/menu-hero/appetizers.jpg";
 import entreesBg from "../assets/illustrations/menu-hero/entrees.jpg";
 import sidesBg from "../assets/illustrations/menu-hero/sides.jpg";
@@ -22,9 +36,10 @@ import teaCoffeeBg from "../assets/illustrations/menu-hero/tea-coffee.jpg";
 import specialsBg from "../assets/illustrations/menu-hero/specials.jpg";
 import kidsBg from "../assets/illustrations/menu-hero/appetizers.jpg";
 
-{
-  /*Category Hero Map*/
-}
+/*CATEGORY HERO MAP (Static lookup table)
+Responsibility: For a given category ID, provide the hero content (headline, subcopy, images).
+This is NOT a React state. It never changes at runtime.
+*/
 const categoryHeroMap = {
   appetizers: {
     headline: "Start Strong.",
@@ -95,13 +110,39 @@ const categoryHeroMap = {
 };
 
 function Menu() {
+  //==============================
+  //STATE (Source of Truth)
+  //==============================
+
+  //Which tab is currently selected?
+  //State because it changes whenever user clicks tabs.
   const [activeCategory, setActiveCategory] = useState(menuCategories[1].id);
+
+  //CART STATE (current implementation)
+  //itemQuantities is an object: {[idenId]: quantity}
+  //This is the current "cart source of truth."
   const [itemQuantities, setItemQuantities] = useState({});
+
+  //NOTE: Created a different cart state earlier but it was never used/updated.
+  //Keeping an unused cart state creates confusion
+  //const [cart, setCart] = useState{[]}; (remove untile truly ready to migrate to cart array)
+
+  //==============================
+  //DERIVED VALUES (Computed from state + static data)
+  //These are not state because they can be recalculated from the above
+  //==============================
+
+  //Pick hero content for the active category (or fall back to the default).
   const heroContent =
     categoryHeroMap[activeCategory] ?? categoryHeroMap.default;
+
+  //Filter menu Data down to items in the items in the selected category.
   const filteredItems = menuData.filter(
     (item) => item.category === activeCategory
   );
+
+  //Sort the filtered items based on display rules.
+  //Derived value: changes automatically when activeCategory changes.
   const sortedItems = [...filteredItems].sort((a, b) => {
     //1) Chef's Signature First
     if (a.isChefSignature !== b.isChefSignature) {
@@ -117,12 +158,21 @@ function Menu() {
     return a.title.localeCompare(b.title);
   });
 
+  //Sort categories by configured order (used for rendering tabs).
   const sortedCategories = [...menuCategories].sort(
     (a, b) => a.order - b.order
   );
 
+  //Used for empty state UI.
   const isEmptyCategory = sortedItems.length === 0;
 
+  //==============================
+  //HANDLERS (Functions that update state)
+  //==============================
+
+  //Sets the quantity of a specific item ID to an explicit nextQty
+  //If nextQty <= 0 , remove it from the object (that means not in cart)
+  //This keeps item Quantities clean and supports "distinct items" counting.
   const handleQuantityChange = (id, nextQty) => {
     setItemQuantities((prev) => {
       const updated = { ...prev };
@@ -132,6 +182,8 @@ function Menu() {
     });
   };
 
+  //Adds 1 to the quantity for a spoecific item ID (increment)
+  //This is the Add to Cart behaviour.
   const handleCardClickAdd = (id) => {
     setItemQuantities((prev) => ({
       ...prev,
@@ -139,6 +191,17 @@ function Menu() {
     }));
   };
 
+  const handleRemoveFromCart = (id) => {
+    setItemQuantities((prev) => {
+      const updated = { ...prev };
+      delete updated[id];
+      return updated;
+    });
+  };
+
+  //==============================
+  //RENDER
+  //==============================
   return (
     <>
       <div>
@@ -225,7 +288,7 @@ function Menu() {
                   variant="menu"
                   {...item}
                   quantity={itemQuantities[item.id] || 0}
-                  onCardClick={handleCardClickAdd}
+                  onCardClick={() => handleCardClickAdd(item.id)}
                   onQuantityChange={handleQuantityChange}
                 />
               ))}
@@ -233,6 +296,13 @@ function Menu() {
           )}
         </div>
       </section>
+
+      <Cart
+        itemQuantities={itemQuantities}
+        menuData={menuData}
+        onRemoveItem={handleRemoveFromCart}
+        onQuantityChange={handleQuantityChange}
+      />
     </>
   );
 }
