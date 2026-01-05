@@ -2,8 +2,16 @@ import "./Cart.css";
 import Button from "./Button";
 import QuantityControl from "./QuantityControl";
 import { IoClose } from "react-icons/io5";
+import { LuTrash2 } from "react-icons/lu";
 
-function Cart({ itemQuantities, menuData, onRemoveItem, onQuantityChange }) {
+function Cart({
+  isOpen,
+  isClosed,
+  itemQuantities,
+  menuData,
+  onRemoveItem,
+  onQuantityChange,
+}) {
   // =========================
   // DERIVED VALUES (READ-ONLY)
   // =========================
@@ -26,23 +34,38 @@ function Cart({ itemQuantities, menuData, onRemoveItem, onQuantityChange }) {
     return sum + row.lineTotal;
   }, 0);
 
+  //Close Cart
+  if (!isOpen) return null;
+
   // Empty cart (or nothing renderable)
   if (cartRows.length === 0) {
     return (
-      <section className="section-cart">
-        <div className="container-cart">
-          <h2>Cart</h2>
-          <div className="cart-items-empty">
-            <p>Let&apos;s fill your plate.</p>
+      <section className="cart-overlay" onClick={onClose}>
+        <section className="section-cart">
+          <div className="container-cart">
+            <Button
+              variant="ghost"
+              size="sm"
+              leftIcon={<IoClose />}
+              showLeftIcon={true}
+              aria-label="Close cart"
+              onClick={isClosed}
+              className="close-icon"
+            />
+
+            <h2>Cart</h2>
+            <div className="cart-items-empty">
+              <p>Let&apos;s fill your plate.</p>
+            </div>
+            <Button
+              className="order"
+              disabled={cartRows.length === 0}
+              aria-disabled={cartRows.length === 0}
+            >
+              ORDER
+            </Button>
           </div>
-          <Button
-            className="order"
-            disabled={cartRows.length === 0}
-            aria-disabled={cartRows.length === 0}
-          >
-            ORDER
-          </Button>
-        </div>
+        </section>
       </section>
     );
   }
@@ -52,51 +75,63 @@ function Cart({ itemQuantities, menuData, onRemoveItem, onQuantityChange }) {
   const total = subtotal + tax;
 
   return (
-    <section className="section-cart cart-panel">
-      <div className="container-cart">
-        <h2>Cart</h2>
+    <section className="cart-overlay" onClick={onClose}>
+      <section className="section-cart cart-panel">
+        <div className="container-cart">
+          <Button
+            variant="ghost"
+            size="sm"
+            leftIcon={<IoClose />}
+            showLeftIcon={true}
+            aria-label="Close cart"
+            onClick={isClosed}
+            className="close-icon"
+          />
 
-        <div className="cart-items">
-          {cartRows.map((row) => (
-            <div key={row.id} className="line-item">
-              <p>
-                {row.item.title} ({row.qty}):{" "}
-                <strong>${row.lineTotal.toFixed(2)}</strong>
-              </p>
+          <h2>Cart</h2>
 
-              <div className="actions">
-                <QuantityControl
-                  value={row.qty}
-                  onIncrement={() => onQuantityChange(row.id, row.qty + 1)}
-                  onDecrement={() =>
-                    onQuantityChange(row.id, Math.max(row.qty - 1, 0))
-                  }
-                />
+          <div className="cart-items">
+            {cartRows.map((row) => (
+              <div key={row.id} className="line-item">
+                <p>
+                  {row.item.title} ({row.qty}):{" "}
+                  <strong>${row.lineTotal.toFixed(2)}</strong>
+                </p>
 
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  leftIcon={<IoClose />}
-                  showLeftIcon={true}
-                  aria-label={`Remove ${row.item.title}`}
-                  onClick={() => onRemoveItem(row.id)}
-                />
+                <div className="actions">
+                  <QuantityControl
+                    value={row.qty}
+                    onIncrement={() => onQuantityChange(row.id, row.qty + 1)}
+                    onDecrement={() =>
+                      onQuantityChange(row.id, Math.max(row.qty - 1, 0))
+                    }
+                  />
+
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    leftIcon={<LuTrash2 />}
+                    showLeftIcon={true}
+                    aria-label={`Remove ${row.item.title}`}
+                    onClick={() => onRemoveItem(row.id)}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="cart-total">
-          <p className="before-tax">
-            <strong>Subtotal:</strong> ${subtotal.toFixed(2)}
-          </p>
-          <p className="final-cost">
-            <strong>Total: ${total.toFixed(2)}</strong>
-          </p>
-        </div>
+          <div className="cart-total">
+            <p className="before-tax">
+              <strong>Subtotal:</strong> ${subtotal.toFixed(2)}
+            </p>
+            <p className="final-cost">
+              <strong>Total: ${total.toFixed(2)}</strong>
+            </p>
+          </div>
 
-        <Button className="order">ORDER</Button>
-      </div>
+          <Button className="order">ORDER</Button>
+        </div>
+      </section>
     </section>
   );
 }

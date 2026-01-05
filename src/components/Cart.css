@@ -11,6 +11,10 @@
     color: black;
 }
 
+.close-icon {
+    margin-bottom: 16px;
+}
+
 .container-cart h2 {
     font-family: "Bebas Neue", sans-serif;
     margin-top: 0px;

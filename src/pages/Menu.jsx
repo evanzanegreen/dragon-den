@@ -16,6 +16,7 @@ import Cart from "../components/Cart.jsx";
 import Hero from "../components/Hero.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 //Assets for category hero content (illustrations + background images)
 import appetizersHero from "../assets/illustrations/categories/category-appetizers.png";
@@ -125,7 +126,9 @@ function Menu() {
 
   //NOTE: Created a different cart state earlier but it was never used/updated.
   //Keeping an unused cart state creates confusion
-  //const [cart, setCart] = useState{[]}; (remove untile truly ready to migrate to cart array)
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
 
   //==============================
   //DERIVED VALUES (Computed from state + static data)
@@ -189,6 +192,7 @@ function Menu() {
       ...prev,
       [id]: (prev[id] || 0) + 1,
     }));
+    openCart();
   };
 
   const handleRemoveFromCart = (id) => {
@@ -198,6 +202,11 @@ function Menu() {
       return updated;
     });
   };
+
+  const cartCount = Object.values(itemQuantities).reduce(
+    (sum, qty) => sum + qty,
+    0
+  );
 
   //==============================
   //RENDER
@@ -217,8 +226,18 @@ function Menu() {
 
       <section className="section-menu">
         <div className="container-menu">
-          <h1 className="header-menu">Our Menu</h1>
-          {/*Category Hero Here*/}
+          <div className="menu-cart">
+            <h1 className="header-menu">Our Menu</h1>
+            <Button
+              variant="ghost"
+              size="sm"
+              leftIcon={<MdOutlineShoppingCart />}
+              aria-label="Open Cart"
+              onClick={openCart}
+            >
+              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            </Button>
+          </div>
 
           {/*Menu Tabs Here*/}
           <div className="menu-tabs">
@@ -298,6 +317,8 @@ function Menu() {
       </section>
 
       <Cart
+        isOpen={isCartOpen}
+        isClosed={closeCart}
         itemQuantities={itemQuantities}
         menuData={menuData}
         onRemoveItem={handleRemoveFromCart}

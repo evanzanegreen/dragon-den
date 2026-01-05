@@ -20,6 +20,19 @@ body {
     color: black;
 }
 
+.menu-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-badge {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 /*Tab Styles*/
 
 .menu-tabs {
