@@ -6,7 +6,7 @@ import { LuTrash2 } from "react-icons/lu";
 
 function Cart({
   isOpen,
-  isClosed,
+  onClose,
   itemQuantities,
   menuData,
   onRemoveItem,
@@ -41,15 +41,14 @@ function Cart({
   if (cartRows.length === 0) {
     return (
       <section className="cart-overlay" onClick={onClose}>
-        <section className="section-cart">
+        <section className="section-cart cart-panel">
           <div className="container-cart">
             <Button
               variant="ghost"
               size="sm"
               leftIcon={<IoClose />}
-              showLeftIcon={true}
               aria-label="Close cart"
-              onClick={isClosed}
+              onClick={onClose}
               className="close-icon"
             />
 
@@ -75,16 +74,15 @@ function Cart({
   const total = subtotal + tax;
 
   return (
-    <section className="cart-overlay" onClick={onClose}>
+    <section className="cart-overlay">
       <section className="section-cart cart-panel">
         <div className="container-cart">
           <Button
             variant="ghost"
             size="sm"
             leftIcon={<IoClose />}
-            showLeftIcon={true}
             aria-label="Close cart"
-            onClick={isClosed}
+            onClick={onClose}
             className="close-icon"
           />
 
@@ -99,21 +97,23 @@ function Cart({
                 </p>
 
                 <div className="actions">
-                  <QuantityControl
-                    value={row.qty}
-                    onIncrement={() => onQuantityChange(row.id, row.qty + 1)}
-                    onDecrement={() =>
-                      onQuantityChange(row.id, Math.max(row.qty - 1, 0))
-                    }
-                  />
+                  <div className="quantity-controller">
+                    <QuantityControl
+                      value={row.qty}
+                      onIncrement={() => onQuantityChange(row.id, row.qty + 1)}
+                      onDecrement={() =>
+                        onQuantityChange(row.id, Math.max(row.qty - 1, 0))
+                      }
+                    />
+                  </div>
 
                   <Button
                     variant="ghost"
                     size="sm"
                     leftIcon={<LuTrash2 />}
-                    showLeftIcon={true}
                     aria-label={`Remove ${row.item.title}`}
                     onClick={() => onRemoveItem(row.id)}
+                    className="icon-only"
                   />
                 </div>
               </div>

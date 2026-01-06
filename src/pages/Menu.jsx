@@ -318,7 +318,7 @@ function Menu() {
 
       <Cart
         isOpen={isCartOpen}
-        isClosed={closeCart}
+        onClose={closeCart}
         itemQuantities={itemQuantities}
         menuData={menuData}
         onRemoveItem={handleRemoveFromCart}

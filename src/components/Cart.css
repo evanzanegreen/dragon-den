@@ -1,18 +1,54 @@
 .section-cart {
     background-color: #CCCCCC;
-    width: 100%;
 }
 
 .container-cart {
     width: 100%;
     max-width: 1200px;
     margin-inline: auto;
-    padding: 5rem;
+    padding: 2rem;
     color: black;
 }
 
 .close-icon {
     margin-bottom: 16px;
+}
+
+.cart-overlay {
+    cursor: default;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    /* Reserve space for your fixed navbar */
+    padding-top: 90px;     /* adjust to your navbar height */
+    padding-bottom: 24px;
+    padding-right: 16px;
+    padding-left: 16px;
+
+    background: rgba(0, 0, 0, 0.45);
+    box-sizing: border-box;
+}
+
+.cart-panel {
+    width: 360px;
+    max-height: calc(100vh - 90px - 24px);
+    overflow-y: auto;
+    z-index: 10001;
+
+    margin-right: 0; /* padding-right now handles spacing */
+    border-radius: 12px;
+
+    background: #ccc; /* or white if you prefer */
+}
+
+.cart-panel .container-cart {
+    max-width: 100%;
+    padding: 1rem; /* reduce from 2rem */
 }
 
 .container-cart h2 {
@@ -38,24 +74,60 @@
 
 .line-item {
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 12px;        /* reduce from 24px */
     padding-bottom: 8px;
+    min-width: 0;
+}
+
+.line-item p {
+    margin: 0;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .actions {
-    width: 20%;
     display: flex;
-    flex-direction: row;
-    gap: 24px;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;   /* don’t stretch weirdly */
+    min-width: 0;
+}
+
+.cart-panel .quantity-controller {
+  width: 140px;
+  flex: 0 0 140px;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.cart-panel .quantity-controller > * {
+  width: 100%;
+  min-width: 0;
+}
+
+.cart-panel .btn-icon {
+    font-size: 16px;
 }
 
 .btn-icon {
+    font-size: 18px;
+}
+
+.btn-icon-lg .btn-icon {
     font-size: 24px;
 }
 
 .order {
     display: flex;
     width: 100%;
+}
+
+.cart-panel .btn-text:empty {
+  display: none;
 }
