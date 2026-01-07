@@ -7,7 +7,7 @@
 //Renders Hero, Tabs, Category Hero, Item Cards and Cart Surface
 //================================================================
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import menuData from "../data/menuData.js"; //Static catalog that contains: title, price, id, category, etc.
 import menuCategories from "../config/menuCategories.js"; //Static config: category list + ordering (organization, not purchase)
 import "./Menu.css";
@@ -128,7 +128,39 @@ function Menu() {
   //Keeping an unused cart state creates confusion
   const [isCartOpen, setIsCartOpen] = useState(false);
   const openCart = () => setIsCartOpen(true);
-  const closeCart = () => setIsCartOpen(false);
+  const closeCart = useCallback(() => setIsCartOpen(false), []);
+
+  //==============================
+  //EFFECT
+  //==============================
+  useEffect(() => {
+    const cartCount = Object.values(itemQuantities).reduce(
+      (sum, qty) => sum + qty,
+      0
+    );
+
+    if (isCartOpen) {
+      document.title = `Dragon Den • Cart Open (${cartCount})`;
+    } else {
+      document.title = "Dragon Den";
+    }
+  }, [isCartOpen, itemQuantities]);
+
+  useEffect(() => {
+    if (!isCartOpen) return;
+
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        closeCart();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isCartOpen, closeCart]);
 
   //==============================
   //DERIVED VALUES (Computed from state + static data)
