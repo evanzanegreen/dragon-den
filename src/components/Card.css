@@ -1,3 +1,22 @@
+.card-click {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Keyboard focus ring (keep accessibility) */
+.card-click:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* If disabled */
+.card-click:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
 .card-container {
     min-width: 260px;
     max-width: 360px;
@@ -139,5 +158,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100%;            /* creates space from the content above */
+    padding-top: 8px;
+    padding-bottom: 8px;
 }

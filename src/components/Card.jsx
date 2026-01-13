@@ -74,9 +74,11 @@ function Card(props) {
   const handleDecrement = () => onQuantityChange(id, Math.max(quantity - 1, 0));
 
   return (
-    <>
-      <div
-        className={`card-container card-${variant ?? "default"}`}
+    <div className={`card-container card-${variant ?? "default"}`}>
+      {/* Click surface */}
+      <button
+        type="button"
+        className="card-click"
         onClick={
           isClickable
             ? isMenu
@@ -84,19 +86,7 @@ function Card(props) {
               : () => onFeatureClick?.()
             : undefined
         }
-        onKeyDown={
-          isClickable
-            ? (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  if (isMenu) onCardClick?.(id);
-                  else onFeatureClick?.();
-                }
-              }
-            : undefined
-        }
-        role={isClickable ? "button" : undefined}
-        tabIndex={isClickable ? 0 : undefined}
+        disabled={!isClickable}
       >
         {/*Card Image*/}
         <div className="card-img">
@@ -121,27 +111,25 @@ function Card(props) {
                 ))}
               </span>
 
-              {/* If spiceLevel is a string like "Medium", show it. If it’s a number, show nothing or a lookup */}
               {spiceLabel && <CardTag text={spiceLabel} variant="spice" />}
             </div>
           )}
 
-          {/*Card Description*/}
           {showDescription && <p className="card-description">{description}</p>}
-
-          {/*Card Actions*/}
-          {canShowQuantityControl && (
-            <div className="card-actions" onClick={(e) => e.stopPropagation()}>
-              <QuantityControl
-                value={quantity}
-                onIncrement={handleIncrement}
-                onDecrement={handleDecrement}
-              />
-            </div>
-          )}
         </div>
-      </div>
-    </>
+      </button>
+
+      {/* Actions OUTSIDE the button (prevents nested buttons) */}
+      {canShowQuantityControl && (
+        <div className="card-actions">
+          <QuantityControl
+            value={quantity}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+          />
+        </div>
+      )}
+    </div>
   );
 }
 
