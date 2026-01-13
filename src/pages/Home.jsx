@@ -4,8 +4,15 @@ import "./Home.css";
 import chefSignature from "../assets/Chef Signature.png";
 import menuData from "../data/menuData.js";
 import Card from "../components/Card.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
+  const handleFeaturedClick = (categoryId, itemId) => {
+    navigate(`/menu?category=${categoryId}&item=${itemId}`);
+  };
+
   const jerkChicken = menuData.find((item) => item.id === "ent-jerk-chicken");
 
   return (
@@ -60,6 +67,9 @@ function Home() {
               spiceLevel={jerkChicken.spiceLevel}
               isChefSignature={jerkChicken.isChefSignature}
               isSeasonal={jerkChicken.isSeasonal}
+              onFeatureClick={() =>
+                handleFeaturedClick("entrees", jerkChicken.id)
+              }
             />
           ) : (
             <p>Jerk chicken item not found. Check the id.</p>

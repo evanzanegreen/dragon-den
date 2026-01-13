@@ -35,6 +35,7 @@ function Card(props) {
     quantity = 0,
     onQuantityChange,
     onCardClick,
+    onFeatureClick,
   } = props;
 
   const showRole = variant === "team";
@@ -44,6 +45,9 @@ function Card(props) {
     variant === "menu" &&
     typeof onQuantityChange === "function" &&
     quantity > 0;
+
+  const isMenu = variant === "menu";
+  const isClickable = isMenu ? !!onCardClick : !!onFeatureClick;
 
   const normalizedSpice =
     typeof spiceLevel === "string" ? spiceLevel.trim() : spiceLevel;
@@ -73,9 +77,26 @@ function Card(props) {
     <>
       <div
         className={`card-container card-${variant ?? "default"}`}
-        onClick={variant === "menu" ? () => onCardClick?.(id) : undefined}
-        role={variant === "menu" ? "button" : undefined}
-        tabIndex={variant === "menu" ? 0 : undefined}
+        onClick={
+          isClickable
+            ? isMenu
+              ? () => onCardClick?.(id)
+              : () => onFeatureClick?.()
+            : undefined
+        }
+        onKeyDown={
+          isClickable
+            ? (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  if (isMenu) onCardClick?.(id);
+                  else onFeatureClick?.();
+                }
+              }
+            : undefined
+        }
+        role={isClickable ? "button" : undefined}
+        tabIndex={isClickable ? 0 : undefined}
       >
         {/*Card Image*/}
         <div className="card-img">

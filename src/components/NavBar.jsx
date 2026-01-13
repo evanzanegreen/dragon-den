@@ -18,29 +18,35 @@ function NavBar() {
 
   return (
     <nav className="navbar">
-      {/*Logo*/}
-      <NavLink to="/">
-        <div className="logo-box">
-          <img className="dd-logo" src={ddLogo} alt="" />
-        </div>
-      </NavLink>
-
-      {/*Links*/}
-      <div className="nav-item">
-        <NavLink to="/">HOME</NavLink>
-        <NavLink to="/about">ABOUT</NavLink>
-        <NavLink to="/menu">MENU</NavLink>
+      {/* Left */}
+      <div className="nav-left">
+        <NavLink to="/" className="logo-link">
+          <div className="logo-box">
+            <img className="dd-logo" src={ddLogo} alt="Dragon Den" />
+          </div>
+        </NavLink>
       </div>
 
-      {/*Reservation Button*/}
-      <Button
-        leftIcon={<GiForkKnifeSpoon />}
-        size="md"
-        variant="primary"
-        onClick={handleReservationClick}
-      >
-        RESERVE A TABLE
-      </Button>
+      {/* Center */}
+      <div className="nav-center">
+        <div className="nav-item">
+          <NavLink to="/">HOME</NavLink>
+          <NavLink to="/about">ABOUT</NavLink>
+          <NavLink to="/menu">MENU</NavLink>
+        </div>
+      </div>
+
+      {/* Right */}
+      <div className="nav-right">
+        <Button
+          leftIcon={<GiForkKnifeSpoon />}
+          size="md"
+          variant="primary"
+          onClick={handleReservationClick}
+        >
+          RESERVE A TABLE
+        </Button>
+      </div>
     </nav>
   );
 }

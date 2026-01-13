@@ -1,9 +1,15 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .app-shell {
   padding: 2rem; /* normal content padding */
 }
 
 .app-content {
-  padding-top: 80px;
+  padding-top: 80px; /* equals navbar height */
 }
 
 /*.logo {
