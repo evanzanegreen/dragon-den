@@ -4,6 +4,18 @@ import QuantityControl from "./QuantityControl";
 import { IoClose } from "react-icons/io5";
 import { LuTrash2 } from "react-icons/lu";
 
+function CartOverlay({ children }) {
+  return <section className="cart-overlay">{children}</section>;
+}
+
+function CartPanel({ children }) {
+  return (
+    <section className="section-cart cart-panel">
+      <div className="container-cart">{children}</div>
+    </section>
+  );
+}
+
 function Cart({
   isOpen,
   onClose,
@@ -40,8 +52,8 @@ function Cart({
   // Empty cart (or nothing renderable)
   if (cartRows.length === 0) {
     return (
-      <section className="cart-overlay" onClick={onClose}>
-        <section className="section-cart cart-panel">
+      <CartOverlay>
+        <CartPanel>
           <div className="container-cart">
             <Button
               variant="ghost"
@@ -64,8 +76,8 @@ function Cart({
               ORDER
             </Button>
           </div>
-        </section>
-      </section>
+        </CartPanel>
+      </CartOverlay>
     );
   }
 
@@ -74,9 +86,9 @@ function Cart({
   const total = subtotal + tax;
 
   return (
-    <section className="cart-overlay">
-      <section className="section-cart cart-panel">
-        <div className="container-cart">
+    <CartOverlay>
+      <CartPanel>
+        <div>
           <Button
             variant="ghost"
             size="sm"
@@ -131,8 +143,8 @@ function Cart({
 
           <Button className="order">ORDER</Button>
         </div>
-      </section>
-    </section>
+      </CartPanel>
+    </CartOverlay>
   );
 }
 

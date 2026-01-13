@@ -35,8 +35,12 @@ function Card(props) {
     quantity = 0,
     onQuantityChange,
     onCardClick,
+    onFeatureClick,
+    ...rest
   } = props;
 
+  const handleCardClick =
+    variant === "menu" ? () => onCardClick?.(id) : onFeatureClick;
   const showRole = variant === "team";
   const showCardPrice = variant !== "compact" && variant !== "team";
   const showDescription = variant !== "compact" && variant !== "team";
@@ -71,55 +75,62 @@ function Card(props) {
 
   return (
     <>
-      <div
-        className={`card-container card-${variant ?? "default"}`}
-        onClick={variant === "menu" ? () => onCardClick?.(id) : undefined}
-        role={variant === "menu" ? "button" : undefined}
-        tabIndex={variant === "menu" ? 0 : undefined}
+      <button
+        type="button"
+        className="card"
+        onClick={handleCardClick}
+        {...rest}
       >
-        {/*Card Image*/}
-        <div className="card-img">
-          <img src={mediaSrc} alt={mediaAlt} />
-          {tag && <CardTag text={tag.text} variant={tag.variant} />}
-        </div>
-
-        {/*Card Content*/}
-        <div className="card-content">
-          <div className="card-header">
-            <h3 className="card-title">{title}</h3>
-            {showCardPrice && <span className="card-price">{price}</span>}
+        <div className={`card-container card-${variant ?? "default"}`}>
+          {/*Card Image*/}
+          <div className="card-img">
+            <img src={mediaSrc} alt={mediaAlt} />
+            {tag && <CardTag text={tag.text} variant={tag.variant} />}
           </div>
 
-          {showRole && <span className="card-subtitle">{subtitle}</span>}
-
-          {spiceCount > 0 && (
-            <div className="spice-level">
-              <span className="spice-icons">
-                {spiceIcons.map((_, i) => (
-                  <RiFireFill key={i} />
-                ))}
-              </span>
-
-              {/* If spiceLevel is a string like "Medium", show it. If it’s a number, show nothing or a lookup */}
-              {spiceLabel && <CardTag text={spiceLabel} variant="spice" />}
+          {/*Card Content*/}
+          <div className="card-content">
+            <div className="card-header">
+              <h3 className="card-title">{title}</h3>
+              {showCardPrice && <span className="card-price">{price}</span>}
             </div>
-          )}
 
-          {/*Card Description*/}
-          {showDescription && <p className="card-description">{description}</p>}
+            {showRole && <span className="card-subtitle">{subtitle}</span>}
 
-          {/*Card Actions*/}
-          {canShowQuantityControl && (
-            <div className="card-actions" onClick={(e) => e.stopPropagation()}>
-              <QuantityControl
-                value={quantity}
-                onIncrement={handleIncrement}
-                onDecrement={handleDecrement}
-              />
-            </div>
-          )}
+            {spiceCount > 0 && (
+              <div className="spice-level">
+                <span className="spice-icons">
+                  {spiceIcons.map((_, i) => (
+                    <RiFireFill key={i} />
+                  ))}
+                </span>
+
+                {/* If spiceLevel is a string like "Medium", show it. If it’s a number, show nothing or a lookup */}
+                {spiceLabel && <CardTag text={spiceLabel} variant="spice" />}
+              </div>
+            )}
+
+            {/*Card Description*/}
+            {showDescription && (
+              <p className="card-description">{description}</p>
+            )}
+
+            {/*Card Actions*/}
+            {canShowQuantityControl && (
+              <div
+                className="card-actions"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <QuantityControl
+                  value={quantity}
+                  onIncrement={handleIncrement}
+                  onDecrement={handleDecrement}
+                />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </button>
     </>
   );
 }

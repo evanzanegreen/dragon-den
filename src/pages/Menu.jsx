@@ -7,9 +7,9 @@
 //Renders Hero, Tabs, Category Hero, Item Cards and Cart Surface
 //================================================================
 
+import { useSearchParams } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import menuData from "../data/menuData.js"; //Static catalog that contains: title, price, id, category, etc.
-import menuCategories from "../config/menuCategories.js"; //Static config: category list + ordering (organization, not purchase)
 import "./Menu.css";
 
 import Cart from "../components/Cart.jsx";
@@ -36,6 +36,7 @@ import drinksBg from "../assets/illustrations/menu-hero/drinks.jpg";
 import teaCoffeeBg from "../assets/illustrations/menu-hero/tea-coffee.jpg";
 import specialsBg from "../assets/illustrations/menu-hero/specials.jpg";
 import kidsBg from "../assets/illustrations/menu-hero/appetizers.jpg";
+import MENU_CATEGORIES from "../config/menuCategories.js"; //Static config: category list + ordering (organization, not purchase)
 
 /*CATEGORY HERO MAP (Static lookup table)
 Responsibility: For a given category ID, provide the hero content (headline, subcopy, images).
@@ -117,7 +118,53 @@ function Menu() {
 
   //Which tab is currently selected?
   //State because it changes whenever user clicks tabs.
-  const [activeCategory, setActiveCategory] = useState(menuCategories[1].id);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlCategory = searchParams.get("category");
+  const urlItem = searchParams.get("item");
+
+  const categoryIds = MENU_CATEGORIES.map((cat) => cat.id);
+  const isValidCategory = (id) => categoryIds.includes(id);
+  const defaultCategory = categoryIds.includes("entrees")
+    ? "entrees"
+    : categoryIds[0];
+
+  const [activeCategory, setActiveCategory] = useState(defaultCategory);
+
+  useEffect(() => {
+    if (!urlCategory) return;
+
+    if (isValidCategory(urlCategory)) {
+      setActiveCategory(urlCategory);
+    }
+  });
+
+  const [hasScrolledToItem, setHasScrolledToItem] = useState(false);
+
+  useEffect(() => {
+    setHasScrolledToItem(false);
+  }, [urlItem]);
+
+  useEffect(() => {
+    if (!urlItem || hasScrolledToItem) return;
+
+    const tryScroll = () => {
+      const el = document.getElementById(`menu-item-${urlItem}`);
+      if (!el) return false;
+
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setHasScrolledToItem(true);
+      setSearchParams({}, { replace: true });
+      return true;
+    };
+
+    if (tryScroll()) return;
+
+    const raf = requestAnimationFrame(() => {
+      tryScroll();
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, [activeCategory, urlItem, hasScrolledToItem, setSearchParams]);
 
   //CART STATE (current implementation)
   //itemQuantities is an object: {[idenId]: quantity}
@@ -194,7 +241,7 @@ function Menu() {
   });
 
   //Sort categories by configured order (used for rendering tabs).
-  const sortedCategories = [...menuCategories].sort(
+  const sortedCategories = [...MENU_CATEGORIES].sort(
     (a, b) => a.order - b.order
   );
 
@@ -334,14 +381,15 @@ function Menu() {
           ) : (
             <div className="menu-items-grid">
               {sortedItems.map((item) => (
-                <Card
-                  key={item.id}
-                  variant="menu"
-                  {...item}
-                  quantity={itemQuantities[item.id] || 0}
-                  onCardClick={() => handleCardClickAdd(item.id)}
-                  onQuantityChange={handleQuantityChange}
-                />
+                <div key={item.id} id={`menu-item-${item.id}`}>
+                  <Card
+                    variant="menu"
+                    {...item}
+                    quantity={itemQuantities[item.id] || 0}
+                    onCardClick={() => handleCardClickAdd(item.id)}
+                    onQuantityChange={handleQuantityChange}
+                  />
+                </div>
               ))}
             </div>
           )}

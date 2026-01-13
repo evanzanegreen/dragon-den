@@ -36,8 +36,19 @@ body {
 /*Tab Styles*/
 
 .menu-tabs {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  gap: 12px;
+
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  padding-bottom: 6px; /* gives breathing room if scrollbars appear */
+  scrollbar-width: none; /* Firefox */
+}
+
+.menu-tabs::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .menu-tab.btn-ghost {
@@ -74,7 +85,15 @@ body {
   color: #490100;
 }
 
+.menu-tabs .menu-tab {
+  flex: 0 0 auto;
+}
+
 /*Category Hero*/
+
+[id^="menu-item-"] {
+  scroll-margin-top: 96px;
+}
 
 .menu-category-hero {
   display: flex;

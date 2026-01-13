@@ -39,3 +39,18 @@
     color: black;
 }
 
+@media (max-width: 1024px) {
+  .container-team {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-team {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .container-team p {
+    padding-bottom: 1.5rem;
+  }
+}

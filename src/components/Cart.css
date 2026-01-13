@@ -47,8 +47,24 @@
 }
 
 .cart-panel .container-cart {
-    max-width: 100%;
-    padding: 1rem; /* reduce from 2rem */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;        /* prevent auto-centering behavior in tight panel */
+  padding: 1rem;
+}
+
+@media (max-width: 640px) {
+  .cart-overlay {
+    justify-content: center; /* center the panel on mobile */
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .cart-panel {
+    width: 100%;
+    max-width: 520px; /* optional: keeps it from feeling huge on large phones */
+    border-radius: 12px;
+  }
 }
 
 .container-cart h2 {

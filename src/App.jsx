@@ -9,20 +9,22 @@ import Footer from "./components/Footer.jsx";
 function App() {
   return (
     <>
-      {/*NavBar*/}
-      <NavBar />
+      <div className="app">
+        {/*NavBar*/}
+        <NavBar />
 
-      {/*Pages*/}
-      <main className="app-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/menu" element={<Menu />} />
-        </Routes>
-      </main>
+        {/*Pages*/}
+        <main className="app-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/menu" element={<Menu />} />
+          </Routes>
+        </main>
 
-      {/*Footer*/}
-      <Footer />
+        {/*Footer*/}
+        <Footer />
+      </div>
     </>
   );
 }

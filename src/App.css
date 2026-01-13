@@ -2,7 +2,15 @@
   padding: 2rem; /* normal content padding */
 }
 
+/* App shell foundation */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .app-content {
+  flex: 1;
   padding-top: 80px;
 }
 
