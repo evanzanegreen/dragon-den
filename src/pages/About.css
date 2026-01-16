@@ -1,27 +1,31 @@
+/* =========================
+   ABOUT: Team Section (Desktop base)
+   ========================= */
+
 .section-team {
-    width: 100%;
+  width: 100%;
 }
 
 .container-team {
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding: 5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 5rem;
 }
 
 .header-team {
-    font-family: Bebas Neue, sans-serif;
-    text-transform: uppercase;
-    margin: 0px;
-    color: black;
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+  color: black;
 }
-
 
 .container-team p {
-    color: black;
-    padding-bottom: 2rem;
+  color: black;
+  padding-bottom: 2rem;
 }
 
+/* Team card grid */
 .team-list {
   width: 100%;
   display: grid;
@@ -29,13 +33,45 @@
   gap: 16px;
 }
 
+/* Helps prevent overflow in grid items */
 .team-list > * {
   min-width: 0;
 }
 
-.card-content {
-    display: flex;
-    flex-direction: column;
-    color: black;
+/* IMPORTANT: scope card-content to this section only
+   (avoid accidentally changing other Card variants site-wide) */
+.section-team .card-content {
+  display: flex;
+  flex-direction: column;
+  color: black;
 }
 
+/* =========================
+   Tablet (<= 1024px)
+   ========================= */
+
+@media (max-width: 1024px) {
+  .container-team {
+    padding: 3rem;
+  }
+}
+
+/* =========================
+   Mobile (<= 768px)
+   ========================= */
+
+@media (max-width: 768px) {
+  .container-team {
+    padding: 2rem 1.25rem;
+  }
+
+  .team-list {
+    grid-template-columns: 1fr;
+    justify-items: center; /* center cards */
+  }
+
+  .team-list .card-container {
+    width: 100%;
+    max-width: 320px; /* keeps cards from becoming too wide */
+  }
+}

@@ -18,8 +18,9 @@
 }
 
 .card-container {
-    min-width: 260px;
+    width: 100%;
     max-width: 360px;
+    min-width: 280px;     /* prevents collapse */
     height: auto;
     border: 2px solid #4D4D4D;
     border-radius: 0.5rem;
@@ -161,4 +162,44 @@
     width: 100%;            /* creates space from the content above */
     padding-top: 8px;
     padding-bottom: 8px;
+}
+
+/* TEAM: give images a consistent frame like menu cards */
+.card-team .card-img {
+  height: 220px;        /* tweak */
+  background: #111;     /* or #eaeaea if you want lighter */
+}
+
+.card-team .card-img img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-compact .card-img {
+  height: 200px;
+}
+
+.card-compact .card-img img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.75rem;
+}
+
+.card-click {
+  all: unset;
+  display: block;
+  width: 100%;
+}
+
+/* Only show pointer when it’s actually clickable */
+button.card-click {
+  cursor: pointer;
+}
+
+div.card-click {
+  cursor: default;
 }

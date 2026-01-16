@@ -1,68 +1,130 @@
-body {
-    margin: 0;
-    padding: 0;
-}
+/* =========================
+   HERO (Desktop base)
+   ========================= */
 
 .hero {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100vw;   /* full viewport width */
-  height: 75vh;   /* or 100vh if you want */
+
+  width: 100vw;
+  height: 75vh;          /* desktop baseline */
   overflow: hidden;
 }
 
 .hero-overlay {
   position: absolute;
-  inset: 0; /* same as top:0; right:0; bottom:0; left:0 */
+  inset: 0;
   z-index: 1;
 }
 
 .hero-bg {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;     /* keeps aspect ratio, crops instead of stretching */
   z-index: 0;
-  overflow: hidden;
 }
 
 .hero-content {
-    z-index: 2;
-    padding: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
+  z-index: 2;
+  padding: 5rem;         /* desktop baseline */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
 }
 
 .hero-sm-title {
-    font-family: Bebas Neue, sans-serif;
-    font-size: 4rem;
-    margin: 0;
-    color: white;
-    line-height: 1;
-    letter-spacing: 2px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;       /* desktop baseline */
+  margin: 0;
+  color: white;
+  line-height: 1;
+  letter-spacing: 2px;
 }
 
 .hero-title {
-    font-family: Bebas Neue, sans-serif;
-    margin: 0;
-    line-height: 0.9;
-    font-size: 20rem;
-    color: transparent;
-    -webkit-text-stroke: 3px white;
-    text-stroke: 3px white;        /* Standard version */
+  font-family: "Bebas Neue", sans-serif;
+  margin: 0;
+  line-height: 0.9;
+  font-size: 20rem;      /* desktop baseline */
+  color: transparent;
+  -webkit-text-stroke: 3px white;
 }
 
+/* Optional utility styles */
 .buttons {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 
+/* ⚠️ You had a typo: "2 rem" won't work */
 .menu {
-    margin-right: 2 rem;
+  margin-right: 2rem;
+}
+
+/* =========================
+   Tablet (<= 1024px)
+   ========================= */
+
+@media (max-width: 1024px) {
+  .hero {
+    height: 68vh; /* slightly shorter so it doesn’t dominate */
+  }
+
+  .hero-content {
+    padding: 3rem;
+  }
+
+  .hero-sm-title {
+    font-size: 3rem;
+  }
+
+  .hero-title {
+    font-size: 14rem;
+    -webkit-text-stroke: 2.5px white;
+  }
+}
+
+/* =========================
+   Mobile (<= 768px)
+   Goal: less vertical “tower”, more 4:3-ish feel
+   ========================= */
+
+@media (max-width: 768px) {
+  .hero {
+    height: 52vh;         /* shorter = more “landscape” feel */
+    min-height: 340px;    /* prevents it from becoming tiny */
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .hero-sm-title {
+    font-size: 2.25rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-title {
+    font-size: 9rem;
+    -webkit-text-stroke: 2px white;
+  }
+}
+
+/* Extra-small phones (<= 480px) */
+@media (max-width: 480px) {
+  .hero {
+    height: 48vh;
+    min-height: 320px;
+  }
+
+  .hero-title {
+    font-size: 8rem;
+  }
 }

@@ -4,6 +4,7 @@ import ddLogo from "../assets/Dragon Den Logo White.png";
 import "./NavBar.css";
 import Button from "./Button.jsx";
 import { GiForkKnifeSpoon } from "react-icons/gi";
+import { BsFilterRight } from "react-icons/bs";
 
 function NavBar() {
   const [isReservationOpen, setIsReservationOpen] = useState(false);
@@ -19,33 +20,38 @@ function NavBar() {
   return (
     <nav className="navbar">
       {/* Left */}
-      <div className="nav-left">
-        <NavLink to="/" className="logo-link">
-          <div className="logo-box">
-            <img className="dd-logo" src={ddLogo} alt="Dragon Den" />
-          </div>
-        </NavLink>
-      </div>
+      <NavLink to="/" className="logo-link">
+        <div className="logo-box">
+          <img className="dd-logo" src={ddLogo} alt="Dragon Den" />
+        </div>
+      </NavLink>
 
       {/* Center */}
-      <div className="nav-center">
-        <div className="nav-item">
-          <NavLink to="/">HOME</NavLink>
-          <NavLink to="/about">ABOUT</NavLink>
-          <NavLink to="/menu">MENU</NavLink>
-        </div>
+      <div className="nav-item">
+        <NavLink to="/">HOME</NavLink>
+        <NavLink to="/about">ABOUT</NavLink>
+        <NavLink to="/menu">MENU</NavLink>
       </div>
 
       {/* Right */}
-      <div className="nav-right">
+      <div className="nav-actions">
         <Button
           leftIcon={<GiForkKnifeSpoon />}
           size="md"
           variant="primary"
+          className="reserve-btn"
           onClick={handleReservationClick}
         >
           RESERVE A TABLE
         </Button>
+
+        <Button
+          leftIcon={<BsFilterRight />}
+          size="md"
+          variant="ghost"
+          className="nav-hamburger"
+          aria-label="Open Menu"
+        />
       </div>
     </nav>
   );

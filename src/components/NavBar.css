@@ -1,54 +1,47 @@
+/* =========================
+   NAVBAR (Desktop base)
+   ========================= */
+
 .navbar {
-    display: grid;
-    grid-template-columns: auto 1fr auto; /* left | center lane | right */
-    align-items: center;
-
-    padding: 1rem 5rem;
-    background-color: #222222;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-
-    box-sizing: border-box;
-}
-
-.nav-left {
-  justify-self: start;
-}
-
-.nav-center {
-  justify-self: center; /* this is the key: truly centered */
-  min-width: 0;
-}
-
-.nav-right {
-  justify-self: end;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* logo | links | actions */
   align-items: center;
+
+  padding: 1rem 5rem;
+  background-color: #222222;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  box-sizing: border-box;
 }
 
+/* Logo */
 .logo-box {
-    width: 6rem;
+  width: 6rem;
 }
 
 .dd-logo {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
+/* Center links */
 .nav-item {
-    display: flex;
-    gap: 2rem;
-    width: auto;
+  justify-self: center;
+  min-width: 0; /* prevents overflow */
+  display: flex;
+  gap: 2rem;
 }
 
 .nav-item a {
   text-decoration: none;
   color: white;
+
   padding-bottom: 4px;
   border-bottom: 3px solid transparent;
 }
@@ -58,16 +51,118 @@
   font-weight: 700;
 }
 
+/* Right-side actions wrapper (Reserve + Hamburger) */
+.nav-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  white-space: nowrap; /* prevents wrapping */
+}
+
+/* Reserve button: prevent text wrap */
+.reserve-btn {
+  white-space: nowrap;
+}
+
+/* =========================
+   Hamburger button (Desktop default hidden)
+   ========================= */
+
+.navbar .nav-hamburger {
+  display: none; /* shown only on mobile */
+
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+
+  padding: 0 !important;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  /* Ghost styling */
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  color: white;
+  line-height: 1;
+}
+
+/* If your Button renders a text span, hide it */
+.nav-hamburger .btn-text {
+  display: none;
+}
+
+/* Icon sizing */
+.nav-hamburger svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Hover only on non-touch devices */
+@media (hover: hover) {
+  .nav-hamburger:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: white;
+  }
+}
+
+/* Tap feedback */
+.nav-hamburger:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Keyboard focus */
+.nav-hamburger:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* =========================
+   Tablet
+   ========================= */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+}
+
+/* =========================
+   Mobile
+   ========================= */
+
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem 1rem;
-  }
-
-  .nav-center {
-    display: none; /* links hidden for now */
+    padding: 1rem 1.25rem;
   }
 
   .logo-box {
     width: 5rem;
+  }
+
+  /* Hide center links */
+  .nav-item {
+    display: none;
+  }
+
+  /* Hide reserve button (use your custom class if possible) */
+  .reserve-btn {
+    display: none;
+  }
+
+  /* If you DON'T have reserve-btn yet, this is the fallback:
+     It hides your primary button in the navbar only. */
+  .navbar .btn-primary {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .navbar .nav-hamburger {
+    display: inline-flex;
   }
 }

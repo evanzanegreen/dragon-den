@@ -73,11 +73,13 @@ function Card(props) {
   const handleIncrement = () => onQuantityChange(id, quantity + 1);
   const handleDecrement = () => onQuantityChange(id, Math.max(quantity - 1, 0));
 
+  const Wrapper = isClickable ? "button" : "div";
+
   return (
     <div className={`card-container card-${variant ?? "default"}`}>
       {/* Click surface */}
-      <button
-        type="button"
+      <Wrapper
+        type={isClickable ? "button" : undefined}
         className="card-click"
         onClick={
           isClickable
@@ -86,7 +88,19 @@ function Card(props) {
               : () => onFeatureClick?.()
             : undefined
         }
-        disabled={!isClickable}
+        onKeyDown={
+          isClickable
+            ? (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  if (isMenu) onCardClick?.(id);
+                  else onFeatureClick?.();
+                }
+              }
+            : undefined
+        }
+        role={!isClickable ? undefined : undefined} // button already has role
+        tabIndex={isClickable ? 0 : undefined}
       >
         {/*Card Image*/}
         <div className="card-img">
@@ -117,7 +131,7 @@ function Card(props) {
 
           {showDescription && <p className="card-description">{description}</p>}
         </div>
-      </button>
+      </Wrapper>
 
       {/* Actions OUTSIDE the button (prevents nested buttons) */}
       {canShowQuantityControl && (

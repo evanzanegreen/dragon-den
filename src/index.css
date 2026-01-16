@@ -1,23 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
+/* =========================
+   Global Reset / Base Box Model
+   ========================= */
 * {
   box-sizing: border-box;
 }
 
-html, body, #root {
+/* =========================
+   Document + Root Layout
+   ========================= */
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================
+   CSS Variables (Tokens)
+   ========================= */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
 
+  /* Default text behavior */
+  line-height: 1.5;
+
+  /* Vite starter defaults (kept) */
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #ffffff;
@@ -26,63 +46,119 @@ html, body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Type scale tokens (desktop defaults) */
+  --fs-h1: 3.6rem;
+  --fs-h2: 2.2rem;
+  --fs-h3: 1.5rem;
+  --fs-p: 1rem;
+
+  --lh-heading: 1.1;
+  --lh-body: 1.5;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Tablet */
+@media (max-width: 1024px) {
+  :root {
+    --fs-h1: 2.1rem;
+    --fs-h2: 1.6rem;
+    --fs-h3: 1.15rem;
+    --fs-p: 1rem;
+  }
 }
 
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --fs-h1: 1.9rem;
+    --fs-h2: 1.45rem;
+    --fs-h3: 1.1rem;
+    --fs-p: 0.98rem;
+  }
+}
+
+/* =========================
+   Base Element Styles
+   ========================= */
 body {
-  margin: 0;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-heading);
 }
 
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+}
+
+p {
+  font-size: var(--fs-p);
+  line-height: var(--lh-body);
+}
+
+/* =========================
+   Links
+   ========================= */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+/* =========================
+   Buttons (Global Baseline)
+   ========================= */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+
   background-color: #1a1a1a;
   cursor: pointer;
+
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* =========================
+   Light Mode Overrides
+   ========================= */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
-}
-
-#root {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
 }

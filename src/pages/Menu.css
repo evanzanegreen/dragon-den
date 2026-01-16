@@ -1,25 +1,26 @@
-body {
-    color: black;
-}
+/* =========================
+   MENU PAGE: Layout (Desktop base)
+   ========================= */
 
 .section-menu {
-    width: 100%;
+  width: 100%;
 }
 
 .container-menu {
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding: 5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 5rem;
 }
 
 .header-menu {
-    font-family: "Bebas Neue", sans-serif;
-    text-transform: uppercase;
-    margin: 0px;
-    color: black;
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+  color: black;
 }
 
+/* Header row: "Our Menu" + cart */
 .menu-cart {
   display: flex;
   flex-direction: row;
@@ -33,15 +34,17 @@ body {
   font-size: 1rem;
 }
 
-/*Tab Styles*/
+/* =========================
+   TABS (Desktop base)
+   ========================= */
 
 .menu-tabs {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  gap: 12px;
 }
 
 .menu-tab.btn-ghost {
-  flex: 1;
+  flex: 1; /* equal width on desktop */
   background-color: transparent;
   border: 2px solid black;
   border-radius: 4px;
@@ -49,48 +52,84 @@ body {
   text-transform: uppercase;
 }
 
-.menu-tab.btn-ghost:hover {
-  background-color: rgba(0, 0, 0, 0.25);
-  border: 2px solid black;
-  color: black;
-}
-
 .menu-tab.btn-ghost:active {
-    background-color: #FFB5B4;
-    border: 2px solid #490100;
-    border-radius: 4px;
-    color: #490100;
-}
-
-.menu-tab.btn-ghost:focus-visible {
-    outline: 2px solid #000000;
-    border: 2px solid #490100;
-    outline-offset: 3px;
-}
-
-.menu-tab.is-active {
-  background-color: #FFB5B4;
+  background-color: #ffb5b4;
   border: 2px solid #490100;
   color: #490100;
 }
 
-/*Category Hero*/
+.menu-tab.btn-ghost:focus-visible {
+  outline: 2px solid #000000;
+  border: 2px solid #490100;
+  outline-offset: 3px;
+}
+
+/* React active state */
+.menu-tab.is-active {
+  background-color: #ffb5b4;
+  border: 2px solid #490100;
+  color: #490100;
+}
+
+/* Hover only on non-touch devices */
+@media (hover: hover) {
+  .menu-tab.btn-ghost:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 2px solid black;
+    color: black;
+  }
+}
+
+/* Tablet (tabs wrap instead of overflowing) */
+@media (max-width: 1024px) {
+  .menu-tabs {
+    flex-wrap: wrap;
+  }
+
+  .menu-tab.btn-ghost {
+    flex: 0 1 auto; /* stop forced equal stretching */
+  }
+}
+
+/* Mobile (tabs scroll, scrollbar hidden) */
+@media (max-width: 768px) {
+  .menu-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .menu-tabs::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .menu-tab.btn-ghost {
+    flex: 0 0 auto;
+    min-width: 140px;
+  }
+}
+
+/* =========================
+   CATEGORY HERO (Desktop base)
+   ========================= */
 
 .menu-category-hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+
   margin-top: 1.5rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
 
   border-radius: 16px;
   overflow: hidden;
-
   position: relative;
 }
 
+/* Optional “soft overlay” layer */
 .menu-category-hero::before {
   content: "";
   position: absolute;
@@ -100,9 +139,10 @@ body {
   z-index: 0;
 }
 
+/* Keep inner content above overlays */
 .menu-category-hero > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   min-height: 280px;
 }
 
@@ -111,14 +151,15 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* no zoom */
+  object-fit: cover;
   object-position: center;
   z-index: 0;
 }
+
 .menu-category-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* adjust later */
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
@@ -126,13 +167,13 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertical centering */
+  justify-content: center;
   text-align: left;
   color: white;
 }
 
 .menu-category-hero-kicker {
-  margin: 0 0 0 0;
+  margin: 0;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-family: "Inter", sans-serif;
@@ -140,7 +181,6 @@ body {
   font-size: 2rem;
   color: white;
   line-height: 1;
-  
 }
 
 .menu-category-hero-headline {
@@ -152,6 +192,7 @@ body {
   max-width: 24ch;
 }
 
+/* Desktop-only truncation insurance */
 @media (min-width: 1024px) {
   .menu-category-hero-headline {
     white-space: nowrap;
@@ -184,60 +225,60 @@ body {
   object-fit: contain;
 }
 
-/*Mobile*/
-@media(max-width: 768px) {
-    .menu-tabs {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-    }
+/* Mobile hero layout */
+@media (max-width: 768px) {
+  .menu-category-hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 
-    .menu-tab {
-        flex: 0 0 auto;
-        min-width: 140px;
-    }
+    padding: 1rem;
+    min-height: 240px;
+  }
 
-    .menu-category-hero {
-        flex-direction: column;
-        align-items: flex-start;
-        min-height: 240px;
-        padding: 1rem;
-    }
+  /* Don’t force tall columns on mobile */
+  .menu-category-hero > * {
+    min-height: 0;
+  }
 
-    .menu-category-hero-overlay {
-        background: rgba(0, 0, 0, 0.45);
-    }
+  .menu-category-hero-text {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
 
+  .menu-category-hero-kicker {
+    font-size: 1.25rem;
+  }
+
+  .menu-category-hero-headline {
+    font-size: clamp(2.5rem, 10vw, 4.25rem);
+    max-width: 18ch;
+    text-align: center;
+  }
+
+  .menu-category-hero-subcopy {
+    text-align: center;
+    font-size: 1rem;
+    max-width: 42ch;
+    margin-inline: auto;
+  }
 
   .menu-category-hero-media {
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .menu-category-hero-illustration {
-    width: 100%;
-    max-width: 520px;
-    width: min(220px, 90%);
-    max-height: 160px;
-  }
-
-  /* Hover only on non-touch devices */
-  @media (hover: hover) {
-    .menu-tab:hover {
-      background-color: rgba(0,0,0,0.25);
-      border: 2px solid black;
-      color: black;
-    }
-  }
-
-  /* Active tab (React state) */
-  .menu-tab.is-active {
-    background-color: #FFB5B4;
-    border: 2px solid #490100;
-    color: #490100;
+    width: min(320px, 90%);
+    max-height: 200px;
   }
 }
 
-/*Menu Items*/
+/* =========================
+   MENU GRID (Desktop base)
+   ========================= */
+
 .menu-items-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -255,8 +296,15 @@ body {
   .menu-items-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+
+    /* Centers cards during the “in between” stage */
+    justify-items: center;
   }
 }
+
+/* =========================
+   EMPTY STATE
+   ========================= */
 
 .menu-empty-state {
   margin-top: 2rem;
@@ -269,7 +317,7 @@ body {
 
 .menu-empty-state h3 {
   margin: 0 0 0.5rem 0;
-  font-family: Bebas Neue, sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   text-transform: uppercase;
 }
 
@@ -277,4 +325,20 @@ body {
   margin: 0;
   max-width: 40ch;
   margin-inline: auto;
+}
+
+/* =========================
+   SPACING TWEAKS (Header row)
+   ========================= */
+
+@media (max-width: 1024px) {
+  .menu-cart {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-cart {
+    margin-bottom: 1.25rem;
+  }
 }

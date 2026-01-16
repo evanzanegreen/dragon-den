@@ -1,3 +1,7 @@
+/* =========================
+   FOOTER SECTION (Desktop base)
+   ========================= */
+
 .section-footer {
   background-color: #222222;
   color: white;
@@ -5,16 +9,20 @@
   padding: 64px 0; /* vertical padding belongs here */
 }
 
+/* Container controls width + horizontal padding */
 .container-footer {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 100%;
-  max-width: 1100px;   /* pick one max width */
-  margin-inline: auto;
-  padding: 64px 24px;  /* vertical + horizontal padding */
+
+  padding: 0 24px; /* horizontal padding only (no extra vertical) */
 }
 
+/* Base footer typography (applies across footer) */
 .footer {
   width: 100%;
   font-size: 12px;
@@ -22,30 +30,39 @@
   letter-spacing: 0.2px;
 }
 
+/* If you keep these wrapper divs, keep them “neutral” */
 .footer-inner {
   width: 100%;
-  padding: 0;
   margin: 0;
-  max-width: none;
+  padding: 0;
 }
+
+/* =========================
+   FOOTER COLUMNS (Desktop base)
+   ========================= */
 
 .footer-columns {
   display: flex;
   justify-content: space-between;
-  gap: 48px;
-  width: 100%;
   align-items: flex-start;
+
+  width: 100%;
+  gap: 48px;
 }
 
-.content-footer { 
-    flex: 1.2; 
-    min-width: 280px; 
+.content-footer {
+  flex: 1.2;
+  min-width: 280px;
 }
 
-.footer-right { 
-    flex: 1; 
-    min-width: 280px; 
+.footer-right {
+  flex: 1;
+  min-width: 280px;
 }
+
+/* =========================
+   FOOTER CONTENT (Desktop base)
+   ========================= */
 
 .footer-logo {
   width: 120px;
@@ -53,26 +70,64 @@
   margin-bottom: 1rem;
 }
 
-.cliff-notes, .footer-address, .phone, .email, .hours p, .legal {
-    color: white;
-    margin-top: 0px;
-}
-
 .section-footer h4 {
-    font-family: Bebas Neue, sans-serif;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: white;
-}
-
-.socials {
-  display: flex;
-  gap: 16px;        /* space between icons */
-  font-size: 24px;  /* controls icon size */
-  align-items: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
   color: white;
 }
 
+/* Text blocks */
+.cliff-notes,
+.footer-address,
+.phone,
+.email,
+.hours p,
+.legal,
 .visit {
-    margin-top: 0px;
+  color: white;
+  margin-top: 0;
+}
+
+/* Social icons */
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  font-size: 24px; /* controls icon size */
+  color: white;
+}
+
+/* =========================
+   MOBILE (<= 768px)
+   ========================= */
+
+@media (max-width: 768px) {
+  .section-footer {
+    padding: 48px 0; /* slightly tighter vertical padding */
+  }
+
+  .container-footer {
+    padding: 0 20px;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .content-footer,
+  .footer-right {
+    min-width: 0; /* prevents overflow */
+  }
+
+  .footer-logo {
+    width: 110px;
+  }
+
+  /* If you want socials to visually sit “below everything” */
+  .socials {
+    margin-top: 2rem;
+  }
 }

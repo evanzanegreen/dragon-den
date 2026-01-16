@@ -1,33 +1,76 @@
+/* =========================
+   HOME: Chef Message Section (Desktop base)
+   ========================= */
+
 .section-chef {
-    background-color: #395622;
-    width: 100%;
+  background-color: #395622;
+  width: 100%;
 }
 
 .container-chef {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12rem;
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
-    padding: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12rem;            /* desktop spacing */
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 5rem;         /* desktop padding */
 }
 
 .header-chef {
-    font-family: Bebas Neue, sans-serif;
-    text-transform: uppercase;
-    margin: 0px;
-    color: white;
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+  color: white;
 }
 
-
-.container-chef div p {
-    color: white;
+/* Keep this scoped to the text column */
+.container-chef > div p {
+  color: white;
 }
 
 .signature-chef {
-    color: white;
-    font-family: Bastliga One, sans-serif;
-    font-size: 1.5rem;
+  color: white;
+  font-family: "Bastliga One", sans-serif;
+  font-size: 1.5rem;
+}
+
+/* =========================
+   Tablet (<= 1024px)
+   ========================= */
+
+@media (max-width: 1024px) {
+  .container-chef {
+    padding: 3rem;
+    gap: 4rem; /* 12rem is huge on tablet */
+  }
+}
+
+/* =========================
+   Mobile (<= 768px)
+   ========================= */
+
+@media (max-width: 768px) {
+  .container-chef {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+  }
+
+  /* Optional: keep headline readable */
+  .header-chef {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Ensure the featured card doesn't shrink too much */
+  .container-chef > .card-container,
+  .container-chef .card-container {
+    width: min(360px, 100%);
+    max-width: 100%;
+  }
 }
