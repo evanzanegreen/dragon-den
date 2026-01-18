@@ -31,6 +31,9 @@ body {
    CSS Variables (Tokens)
    ========================= */
 :root {
+  /* Layout tokens */
+  --navbar-h: 82px; /* desktop measured height */
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
 
@@ -70,6 +73,9 @@ body {
 /* Mobile */
 @media (max-width: 768px) {
   :root {
+    /* layout tokens */
+    --navbar-h: 76px; /* mobile measured height */
+
     --fs-h1: 1.9rem;
     --fs-h2: 1.45rem;
     --fs-h3: 1.1rem;
@@ -83,6 +89,7 @@ body {
 body {
   min-width: 320px;
   min-height: 100vh;
+  background-color: #222222;
 }
 
 h1 {

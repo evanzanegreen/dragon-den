@@ -66,6 +66,10 @@
   white-space: nowrap;
 }
 
+.mobile-nav-toggle {
+  display: none;
+}
+
 /* =========================
    Hamburger button (Desktop default hidden)
    ========================= */
@@ -92,6 +96,31 @@
   line-height: 1;
 }
 
+.navbar .nav-close {
+  display: none; /* shown only on mobile */
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  color: white;
+  line-height: 1;
+}
+
+.nav-close .btn-text {
+  display: none;
+}
+
+.nav-close svg {
+  width: 22px;
+  height: 22px;
+}
+
 /* If your Button renders a text span, hide it */
 .nav-hamburger .btn-text {
   display: none;
@@ -105,31 +134,35 @@
 
 /* Hover only on non-touch devices */
 @media (hover: hover) {
-  .nav-hamburger:hover {
+  .nav-hamburger:hover,
+  .nav-close:hover {
     background-color: rgba(255, 255, 255, 0.12);
     border-color: white;
   }
 }
 
 /* Tap feedback */
-.nav-hamburger:active {
+.nav-hamburger:active,
+.nav-close:active {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Keyboard focus */
-.nav-hamburger:focus-visible {
+.nav-hamburger:focus-visible,
+.nav-close:focus-visible {
   outline: 2px solid white;
   outline-offset: 2px;
 }
 
-/* =========================
-   Tablet
-   ========================= */
+.mobile-shelf {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 900;
 
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 1rem 2rem;
-  }
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
 }
 
 /* =========================
@@ -150,19 +183,59 @@
     display: none;
   }
 
-  /* Hide reserve button (use your custom class if possible) */
-  .reserve-btn {
-    display: none;
-  }
+  /* Hide reserve button ONLY in the navbar */
+.navbar .reserve-btn {
+  display: none;
+}
 
   /* If you DON'T have reserve-btn yet, this is the fallback:
-     It hides your primary button in the navbar only. */
+    It hides your primary button in the navbar only. */
   .navbar .btn-primary {
     display: none;
   }
 
   /* Show hamburger */
   .navbar .nav-hamburger {
+    display: inline-flex;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  /* make the reserve button full width inside the shelf */
+  .mobile-shelf .reserve-btn {
+    width: 100%;
+  }
+
+  .mobile-shelf {
+    top: var(--navbar-h);
+    height: calc(100dvh - var(--navbar-h));
+    background-color: #222222;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .mobile-shelf {
+    display: none;
+  }
+  .mobile-shelf.open {
+    display: flex;
+  }
+
+  .mobile-shelf.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar .nav-close {
     display: inline-flex;
   }
 }

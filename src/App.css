@@ -13,30 +13,35 @@
 
 /* Optional outer padding wrapper (use only if your layout needs it) */
 .app-shell {
-  padding: 2rem; /* normal content padding */
+  padding: 0 2rem 2rem;
 }
 
 /* Push page content below the fixed navbar */
 .app-content {
-  padding-top: 80px; /* equals navbar height */
+  padding-top: calc(var(--navbar-h) - 1px);
+  background-color: #ffffff;
 }
 
 /* Tablet */
 @media (max-width: 1024px) {
   .app-shell {
-    padding: 1.5rem;
+    padding: 0 2rem 2rem;
   }
+
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .app-shell {
-    padding: 1rem;
+    padding: 0 1rem 1rem;
   }
 
   .app-content {
-    padding-top: 76px;
+    padding-top: var(--navbar-h);
+    overflow: auto; /* prevents margin-collapsing from the first child */
   }
+
+
 }
 
 /* =========================
