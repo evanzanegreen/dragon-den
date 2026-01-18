@@ -29,3 +29,25 @@ p {
     font-family: Inter, san-serif;
     color: black;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 3rem;
+    gap: 4rem; /* 12rem is huge on tablet */
+  }
+}
+
+/* =========================
+   Mobile (<= 768px)
+   ========================= */
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 2rem 1.25rem;
+    gap: 2rem;
+  }
+}
