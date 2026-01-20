@@ -1,9 +1,21 @@
+import "./Modal.css";
+
 function Modal({ isOpen, onClose, children, ariaLabel }) {
   if (!isOpen) return null;
 
   return (
     <>
-      <div></div>
+      <div className="modal-overlay" onClick={onClose}>
+        <div
+          className="modal-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labeb={ariaLabel}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {children}
+        </div>
+      </div>
     </>
   );
 }
