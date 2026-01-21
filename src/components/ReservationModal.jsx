@@ -1,12 +1,13 @@
 import "./ReservationModal.css";
 import Modal from "./Modal";
+import Button from "./Button";
 import { IoClose } from "react-icons/io5";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
 function ModalHeader({ title, onClose }) {
   return (
-    <div>
-      <h2>{title}</h2>
+    <div className="res-modal-header">
+      <h2 className="res-modal-title">{title}</h2>
 
       <Button
         variant="ghost"
@@ -44,23 +45,25 @@ function ModalActions({ children }) {
   );
 }
 
-function handleSubmit(e) {
-  e.preventDefault(); // stop page reload
-  console.log("Reservation submitted");
-  onClose(); // close modal (optional)
-}
-
 function ReservationModal({ isOpen, onClose }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Find a Table submitted");
+    onClose(); // optional, but gives visible feedback by closing
+  };
+
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} ariaLabel="Resreve a Table">
+      <Modal isOpen={isOpen} onClose={onClose} ariaLabel="Reserve a Table">
         <ModalHeader title="Reserve a Table" onClose={onClose} />
 
-        <form onSubmit={handleSubmit}>
+        <form className="res-modal-form" onSubmit={handleSubmit}>
           <ModalField label="Full Name" />
-          <ModalField label="Party Size" type="number" />
-          <ModalField label="Date" type="date" />
-          <ModalField label="Time" type="time" />
+          <div className="res-modal-row">
+            <ModalField label="Party Size" type="number" />
+            <ModalField label="Date" type="date" />
+            <ModalField label="Time" type="time" />
+          </div>
 
           <ModalActions>Find a Table</ModalActions>
         </form>

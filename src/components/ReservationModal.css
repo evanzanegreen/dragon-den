@@ -1,0 +1,63 @@
+/* Header layout */
+.res-modal-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.res-modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Form layout */
+.res-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Each field stacks label + input */
+.modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-field span {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgb(0, 0, 0);
+  box-sizing: border-box;
+}
+
+/* CTA spacing */
+.submit-btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Row for party size + date + time */
+.res-modal-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 12px;
+}
+
+/* Mobile adjustment */
+@media (max-width: 480px) {
+  .res-modal-row {
+    grid-template-columns: 1fr;
+  }
+}

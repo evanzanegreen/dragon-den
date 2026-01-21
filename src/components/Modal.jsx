@@ -1,7 +1,21 @@
 import "./Modal.css";
+import { useEffect } from "react";
 
 function Modal({ isOpen, onClose, children, ariaLabel }) {
   if (!isOpen) return null;
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, onClose]);
 
   return (
     <>
@@ -13,7 +27,7 @@ function Modal({ isOpen, onClose, children, ariaLabel }) {
           aria-labeb={ariaLabel}
           onClick={(e) => e.stopPropagation()}
         >
-          {children}
+          <div className="modal-content">{children}</div>
         </div>
       </div>
     </>
