@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ddLogo from "../assets/Dragon Den Logo White.png";
 import "./NavBar.css";
@@ -7,17 +7,7 @@ import { GiForkKnifeSpoon } from "react-icons/gi";
 import { BsFilterRight } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 
-function NavBar() {
-  const [isReservationOpen, setIsReservationOpen] = useState(false);
-
-  useEffect(() => {
-    console.log("Reservation open:", isReservationOpen);
-  }, [isReservationOpen]);
-
-  const handleReservationClick = () => {
-    setIsReservationOpen((prev) => !prev);
-  };
-
+function NavBar({ onReserveClick, reserveBtnRef }) {
   const [navOpen, setNavOpen] = useState(false);
 
   const toggleNav = () => setNavOpen((prev) => !prev);
@@ -47,7 +37,8 @@ function NavBar() {
             size="md"
             variant="primary"
             className="reserve-btn"
-            onClick={handleReservationClick}
+            onClick={onReserveClick}
+            ref={reserveBtnRef}
           >
             RESERVE A TABLE
           </Button>
@@ -86,7 +77,7 @@ function NavBar() {
           size="md"
           variant="primary"
           className="reserve-btn"
-          onClick={handleReservationClick}
+          onClick={onReserveClick}
         >
           RESERVE A TABLE
         </Button>

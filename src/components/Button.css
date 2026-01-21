@@ -81,7 +81,8 @@
 }
 
 .btn-primary:focus-visible {
-    outline-color:#490100;
+    outline:2px solid white;
+    outline-offset: 3px;
 }
 
 .btn-secondary {
@@ -123,6 +124,11 @@
 }
 
 .btn-ghost:focus-visible {
-    outline-color:#490100;
+    outline:2px solid #490100;
+    outline-offset: 3px;
+}
+
+.resreve-btn:focus-visible {
+    outline:2px solid white;
     outline-offset: 3px;
 }

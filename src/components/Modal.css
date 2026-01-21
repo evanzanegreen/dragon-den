@@ -1,0 +1,26 @@
+/* Full-screen overlay that does NOT affect layout */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;            /* above navbar (yours is 1000) */
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* The dialog box */
+.modal-dialog {
+  width: min(560px, 100%);
+  background: #dedede;
+  color: rgb(0, 0, 0);
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
