@@ -1,18 +1,22 @@
 import "./Button.css";
+import { forwardRef } from "react";
 
-function Button({
-  size = "md",
-  variant = "primary",
-  className = "",
-  children,
-  leftIcon = null,
-  leftIconVisible = true,
-  showLeftIcon,
-  rightIcon = null,
-  rightIconVisible = true,
-  showRightIcon,
-  ...rest
-}) {
+const Button = forwardRef(function Button(
+  {
+    size = "md",
+    variant = "primary",
+    className = "",
+    children,
+    leftIcon = null,
+    leftIconVisible = true,
+    showLeftIcon,
+    rightIcon = null,
+    rightIconVisible = true,
+    showRightIcon,
+    ...rest
+  },
+  ref
+) {
   const ALLOWED_SIZES = ["sm", "md", "lg", "xl"];
   const resolvedSize = ALLOWED_SIZES.includes(size) ? size : "md";
   const sizeClass = `btn-${resolvedSize}`;
@@ -49,6 +53,6 @@ function Button({
       {shouldShowRightIcon && <span className="btn-icon">{rightIcon}</span>}
     </button>
   );
-}
+});
 
 export default Button;

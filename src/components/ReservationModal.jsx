@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import "./ReservationModal.css";
 import Modal from "./Modal";
 import Button from "./Button";
@@ -22,11 +23,11 @@ function ModalHeader({ title, onClose }) {
   );
 }
 
-function ModalField({ label, type = "text" }) {
+function ModalField({ label, type = "text", inputRef }) {
   return (
     <label className="modal-field">
       <span>{label}</span>
-      <input type={type} />
+      <input ref={inputRef} type={type} />
     </label>
   );
 }
@@ -52,13 +53,24 @@ function ReservationModal({ isOpen, onClose }) {
     onClose(); // optional, but gives visible feedback by closing
   };
 
+  const nameInputRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    //Focus after the modal mounts
+    requestAnimationFrame(() => {
+      nameInputRef.current?.focus();
+    });
+  });
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} ariaLabel="Reserve a Table">
         <ModalHeader title="Reserve a Table" onClose={onClose} />
 
         <form className="res-modal-form" onSubmit={handleSubmit}>
-          <ModalField label="Full Name" />
+          <ModalField label="Full Name" inputRef={nameInputRef} />
           <div className="res-modal-row">
             <ModalField label="Party Size" type="number" />
             <ModalField label="Date" type="date" />

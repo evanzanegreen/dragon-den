@@ -11,6 +11,8 @@
   margin: 0;
   font-size: 1.5rem;
   line-height: 1.2;
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
 }
 
 /* Form layout */
@@ -28,8 +30,9 @@
 }
 
 .modal-field span {
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.9);
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-field input {

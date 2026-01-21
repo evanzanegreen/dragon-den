@@ -7,7 +7,7 @@ import { GiForkKnifeSpoon } from "react-icons/gi";
 import { BsFilterRight } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 
-function NavBar({ onReserveClick }) {
+function NavBar({ onReserveClick, reserveBtnRef }) {
   const [navOpen, setNavOpen] = useState(false);
 
   const toggleNav = () => setNavOpen((prev) => !prev);
@@ -38,6 +38,7 @@ function NavBar({ onReserveClick }) {
             variant="primary"
             className="reserve-btn"
             onClick={onReserveClick}
+            ref={reserveBtnRef}
           >
             RESERVE A TABLE
           </Button>
