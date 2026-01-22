@@ -1,5 +1,5 @@
 .section-cart {
-    background-color: #CCCCCC;
+    background-color: white;
 }
 
 .container-cart {
@@ -30,7 +30,7 @@
     padding-right: 16px;
     padding-left: 16px;
 
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.75);
     box-sizing: border-box;
 }
 
