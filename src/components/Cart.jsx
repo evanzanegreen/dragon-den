@@ -11,6 +11,7 @@ function Cart({
   menuData,
   onRemoveItem,
   onQuantityChange,
+  onOrder,
 }) {
   // =========================
   // DERIVED VALUES (READ-ONLY)
@@ -129,7 +130,9 @@ function Cart({
             </p>
           </div>
 
-          <Button className="order">ORDER</Button>
+          <Button className="order" onClick={onOrder}>
+            ORDER
+          </Button>
         </div>
       </section>
     </section>

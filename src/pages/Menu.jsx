@@ -12,10 +12,12 @@ import menuData from "../data/menuData.js"; //Static catalog that contains: titl
 import menuCategories from "../config/menuCategories.js"; //Static config: category list + ordering (organization, not purchase)
 import "./Menu.css";
 
+import Snackbar from "../components/SnackBar.jsx";
 import Cart from "../components/Cart.jsx";
 import Hero from "../components/Hero.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
+import SnackBar from "../components/SnackBar.jsx";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 //Assets for category hero content (illustrations + background images)
@@ -110,7 +112,7 @@ const categoryHeroMap = {
   },
 };
 
-function Menu() {
+function Menu({ showSnackbar }) {
   //==============================
   //STATE (Source of Truth)
   //==============================
@@ -207,6 +209,14 @@ function Menu() {
     (sum, qty) => sum + qty,
     0
   );
+
+  //==============================
+  //SNACKBAR
+  //==============================
+  const handleOrderSubmit = () => {
+    setIsCartOpen(false); //close cart
+    showSnackbar("Thanks for your order! We are preparing it with care."); //feedback
+  };
 
   //==============================
   //RENDER
@@ -323,6 +333,7 @@ function Menu() {
         menuData={menuData}
         onRemoveItem={handleRemoveFromCart}
         onQuantityChange={handleQuantityChange}
+        onOrder={handleOrderSubmit}
       />
     </>
   );
