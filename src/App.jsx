@@ -1,3 +1,5 @@
+//force rebuild: snackbar casing fix confirmed
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
