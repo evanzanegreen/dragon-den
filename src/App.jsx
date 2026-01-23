@@ -8,7 +8,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.jsx";
 import NotFound from "./components/NotFound.jsx";
 import ReservationModal from "./components/ReservationModal.jsx";
-import Snackbar from "./components/SnackBar.jsx";
+import Snackbar from "./components/Snackbar.jsx";
 
 function App() {
   const [isReservationOpen, setIsReservationOpen] = useState(false);

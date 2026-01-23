@@ -17,7 +17,6 @@ import Cart from "../components/Cart.jsx";
 import Hero from "../components/Hero.jsx";
 import Button from "../components/Button.jsx";
 import Card from "../components/Card.jsx";
-import SnackBar from "../components/SnackBar.jsx";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 //Assets for category hero content (illustrations + background images)
