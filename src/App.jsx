@@ -69,6 +69,9 @@ function App() {
       <ReservationModal
         isOpen={isReservationOpen}
         onClose={closeReservationModal}
+        onSuccess={() =>
+          showSnackbar("Reservation received! We’ll be ready for you.")
+        }
       />
 
       <Snackbar open={snackbarOpen} message={snackbarMessage} />

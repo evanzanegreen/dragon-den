@@ -46,11 +46,12 @@ function ModalActions({ children }) {
   );
 }
 
-function ReservationModal({ isOpen, onClose }) {
+function ReservationModal({ isOpen, onClose, onSuccess }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Find a Table submitted");
     onClose(); // optional, but gives visible feedback by closing
+    onSuccess?.(); // triggers snackbar (optional chaining prevents crashes)
   };
 
   const nameInputRef = useRef(null);
