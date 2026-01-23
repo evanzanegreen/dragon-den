@@ -12,7 +12,6 @@ import menuData from "../data/menuData.js"; //Static catalog that contains: titl
 import menuCategories from "../config/menuCategories.js"; //Static config: category list + ordering (organization, not purchase)
 import "./Menu.css";
 
-import Snackbar from "../components/SnackBar.jsx";
 import Cart from "../components/Cart.jsx";
 import Hero from "../components/Hero.jsx";
 import Button from "../components/Button.jsx";
