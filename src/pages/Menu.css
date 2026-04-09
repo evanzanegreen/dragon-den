@@ -13,6 +13,12 @@
   padding: 5rem;
 }
 
+@media (max-width: 420px) {
+  .container-menu{
+    padding: 1rem;
+  }
+}
+
 .header-menu {
   font-family: "Bebas Neue", sans-serif;
   text-transform: uppercase;
