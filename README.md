@@ -1,16 +1,90 @@
-# React + Vite
+# 🍜 Dragon Den — Restaurant Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A restaurant web experience designed to reduce decision fatigue and help users move from browsing to ordering with clarity and confidence.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Demo
 
-## React Compiler
+https://dragon-den-gamma.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 View Code
 
-## Expanding the ESLint configuration
+You’re already here — feel free to explore the structure and implementation below.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧠 Overview
+
+Most restaurant websites prioritize presentation over usability, making it harder for customers to quickly decide what they want.
+
+Dragon Den was designed and built to focus on:
+
+- Clear navigation
+- Faster decision-making
+- Reduced friction between browsing and ordering
+
+The goal was to create a system that holds up under real-world use, not just visual review.
+
+---
+
+## ✨ Key Features
+
+- **Simplified Menu Navigation**  
+  Structured categories that make scanning and decision-making easier
+
+- **Sticky Navigation with Primary CTA**  
+  Keeps key actions accessible at all times
+
+- **Clear User Feedback (Cart / States)**  
+  Guides users through interaction and decision flow
+
+- **Reusable UI Components**  
+  Consistent patterns across the experience
+
+---
+
+## 🧠 System Design Thinking
+
+This project was approached as a system, not a set of isolated screens.
+
+- Designed for multiple user flows (browse → decide → order)
+- Built with reusable UI patterns
+- Structured to support future expansion (roles, features, operations)
+
+The focus was on creating a flexible foundation rather than a fixed design.
+
+---
+
+## ⚙️ How It Was Built
+
+- **Component-Based Architecture**  
+  UI broken into reusable, maintainable components
+
+- **Scalable Navigation Structure**  
+  Designed to grow with content and features
+
+- **State & Interaction Handling**  
+  Supports real-time interactions like selection and ordering
+
+- **Separation of Concerns**  
+  Clear distinction between UI, data, and layout logic
+
+---
+
+## 📁 Project Structure
+
+dragon-den/
+├── public/
+├── src/
+│ ├── assets/ # Images and static resources
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Page-level views
+│ ├── data/ # Menu and structured content
+│ ├── styles/ # CSS and global styles
+│ ├── App.jsx
+│ └── main.jsx
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
